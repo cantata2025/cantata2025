@@ -1,4 +1,4 @@
-package com.cantata.tradetalent.domain.test.dto;
+package com.cantata.tradetalent.domain.test.dto.request;
 
 import com.cantata.tradetalent.domain.test.entity.Message;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class MessageDto {
 
-    @JsonProperty("sender_id")
+
     private int senderId; //발신인 ID
     private int receiverId; //수신인 ID
     @Size(min = 15, max = 1200, message = "최소 15자에서 최대 1200내외로 작성해주세요")
