@@ -1,0 +1,117 @@
+@import url(./common.css);
+body{
+  font-family: "Noto Sans KR", serif;
+}
+/* ================header==================*/
+.head-container{
+  display: flex;
+  justify-content: center;
+}
+.head-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  height: 100px;
+  border-bottom: 1px solid #000;
+  position: fixed;
+  background: #fff;
+}
+.head-wrap .logo{
+  flex: 1;
+  font-size: 20px;
+  font-family: 'Pacifico';
+}
+.head-wrap .nav{
+  display: flex;
+  flex: 2.5;
+}
+.head-wrap .nav li{
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px;
+}
+.head-wrap .search-wrap{
+  flex: 4;
+}
+.search-wrap button{
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  color: rgb(148,148,148);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+button>.fa-search{
+  font-size: 20px;
+  color: #6f6f6f;
+}
+.logout{
+  flex: 1;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* ========== main ============ */
+main{
+  display: flex;
+  justify-content: center;
+}
+#main-wrap{
+  width: 65%;
+  display: flex;
+  justify-content: center;  
+}
+#lessons{
+  width: 100%;
+  height: 100vh;
+  padding: 150px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  
+}
+.lesson{
+  border: 1px solid #8f8f8f;
+  border-radius: 5px;
+  width: 300px;
+  height: 400px;
+  margin: 20px;
+  padding: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+.lesson .skills{
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+.lesson>.skills>div{
+  display: inline-block;
+  padding: 5px;
+}
+.skills>.give{
+  border: 2px solid red;
+}
+.skills>.take{
+  border: 2px solid green;
+}
+.post-content{
+  margin-top: 10px;
+  flex: 7;
+}
+.info{
+  flex: 1;
+}
+.view-count{
+  flex: 1;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 13px;
+}
