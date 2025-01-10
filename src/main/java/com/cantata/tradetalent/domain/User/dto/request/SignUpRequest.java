@@ -24,7 +24,7 @@ public class SignUpRequest {
     private String password; // 비밀번호
 
     @NotBlank(message = "이름을 입력해주세요.")
-    @Pattern(regexp = "^[a-zA-Z0-9\\s]*$", message = "이름은 특수문자를 포함할 수 없습니다.")
+    @Pattern(regexp = "^[a-zA-Z0-9\\\\s가-힣]*$", message = "이름은 특수문자를 포함할 수 없습니다.")
     private String name;  // 닉네임 고유값
 
     public User toEntity(){

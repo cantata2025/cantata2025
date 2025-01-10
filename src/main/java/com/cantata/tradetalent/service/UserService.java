@@ -1,15 +1,20 @@
 package com.cantata.tradetalent.service;
 
+import com.cantata.tradetalent.domain.User.dto.request.LoginRequest;
 import com.cantata.tradetalent.domain.User.dto.request.SignUpRequest;
 import com.cantata.tradetalent.domain.User.dto.response.DuplicateCheckResponse;
 import com.cantata.tradetalent.domain.User.entity.User;
 import com.cantata.tradetalent.exception.ErrorCode;
 import com.cantata.tradetalent.exception.UserException;
+import com.cantata.tradetalent.jwt.JwtTokenProvider;
 import com.cantata.tradetalent.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -20,7 +25,10 @@ public class UserService {
     //패스워드 암호화
     private final PasswordEncoder passwordEncoder;
 
+    private final JwtTokenProvider jwtTokenProvider;
+
     public void signUp(SignUpRequest signUpRequest){
+
         // 비밀번호 암호화하기
         // 숩수 비밀번호를 꺼내서 암호화
         String rawPassword = signUpRequest.getPassword();
@@ -54,5 +62,34 @@ public class UserService {
                 throw new UserException(ErrorCode.INVALID_SIGNUP_DATA);
 
         }
+    }
+
+    @Transactional(readOnly = true)
+    public Map<String, Object> authenticate(LoginRequest loginRequest) {
+
+        String username = loginRequest.getUsername();
+
+        User foundUser = userRepository.findByEmail(username)
+                .orElseGet(() -> userRepository.findByName(username)
+                                .orElseThrow(() ->
+                                        new UserException(ErrorCode.MEMBER_NOT_FOUND)
+                                ));
+
+        // 사용자가 입력한 패스워드와 DB에 저장한 패스워드를 추출
+        String inputPassword = loginRequest.getPassword();
+        String storePassword = foundUser.getPassword();
+
+        // 비번이 일지하지 않으면 예외 발생
+        // 암호화된 비밀번호를 디코딩해서 비교해야함
+        if (!passwordEncoder.matches(inputPassword, storePassword)) {
+            throw new UserException(ErrorCode.INVALID_PASSWORD);
+        }
+
+        // 로그인 성공 (엑세스 토큰 포함)
+        return Map.of(
+                "message", "로그인에 성공했습니다.",
+                "username", foundUser.getEmail(),
+                "accessToken", jwtTokenProvider.createAccessToken(username)
+        );
     }
 }
