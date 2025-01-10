@@ -14,7 +14,7 @@ import lombok.*;
 @Builder
 public class SignUpRequest {
 
-    @Email
+
     @NotBlank (message = "이메일을 입력해주세요.")
     private String email;   // 이메일 (id) 고유값
 

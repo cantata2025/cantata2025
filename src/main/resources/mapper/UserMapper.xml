@@ -5,4 +5,16 @@
         INSERT INTO users (password, name, email)
         VALUES (#{password}, #{name}, #{email});
     </insert>
+
+    <select id="findByEmail" resultType="User">
+        SELECT *
+        FROM users
+        WHERE email = #{email}
+    </select>
+
+    <select id="findByName" resultType="User">
+        SELECT *
+        FROM users
+        WHERE name = #{username}
+    </select>
 </mapper>
