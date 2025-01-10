@@ -31,3 +31,8 @@ logging:
 file:
   upload:
     location: ${user.home}/trade-talent/uploads/
+
+jwt:
+  secret-key: hpiQfYdtu+34loYL7+DBJNJ0mpPGOAl5HQqCjmbLLaQ= # 토큰 발급시와 토큰 위조 검사시 사용할 서명
+  access-token-validity-time: 3600000  # 1시간
+  refresh-token-validity-time: 604800000 # 7일
