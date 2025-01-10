@@ -1,7 +1,6 @@
 package com.cantata.tradetalent.service;
 
 import com.cantata.tradetalent.domain.test.dto.request.MessageDto;
-import com.cantata.tradetalent.domain.test.dto.request.MessageReadDto;
 import com.cantata.tradetalent.domain.test.entity.Message;
 import com.cantata.tradetalent.repository.MessageRepository;
 import jakarta.validation.Valid;
@@ -38,10 +37,12 @@ public class MessageService {
 
     //메시지 삭제
     public void remove(Long id){
-        boolean removed = messageRepository.deleteMessage(id);
-        //DB안에 id가 존재하지 않을 때
-        if (!removed) {
+        int removed = messageRepository.deleteMessage(id);
+        //DB안에 id가 존재하지 않을때
+        if (removed == 0) {
             throw new IllegalStateException("해당 id는 존재하지 않습니다. = " + id);
+
+
         }
     }
 

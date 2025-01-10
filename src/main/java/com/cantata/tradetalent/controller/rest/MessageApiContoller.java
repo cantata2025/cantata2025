@@ -2,17 +2,14 @@ package com.cantata.tradetalent.controller.rest;
 
 
 import com.cantata.tradetalent.domain.test.dto.request.MessageDto;
-import com.cantata.tradetalent.domain.test.dto.request.MessageReadDto;
 import com.cantata.tradetalent.domain.test.entity.Message;
 import com.cantata.tradetalent.service.MessageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.Map;
 
 @RestController
@@ -53,7 +50,7 @@ public class MessageApiContoller {
     @PutMapping("/remove/{id}")
     public ResponseEntity<?> removeMessage(
             @PathVariable Long id,
-            @Valid Message message) {
+            @Valid Message message){
 
         message.setId(id);
         messageService.remove(id);
