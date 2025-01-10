@@ -1,9 +1,14 @@
 package com.cantata.tradetalent.domain.User.entity;
 
-import lombok.Builder;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Getter @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 @Builder
 public class User {
     private Long id;  // 기본 키
