@@ -9,11 +9,10 @@
     </insert>
 
 
-    <update id="updateMessageRead">
+    <update id="updateMessageReceive">
         UPDATE messages
-        SET is_read = #{isRead},
-            received_at = #{receivedAt}
-        WHERE sender_id = #{senderId}
+        SET is_read = TRUE, received_at = CURRENT_TIMESTAMP
+        WHERE pk = #{id} AND receiver_id = #{receiverId};
     </update>
 
     <delete id="deleteMessage">

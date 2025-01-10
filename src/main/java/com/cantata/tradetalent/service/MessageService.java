@@ -29,16 +29,12 @@ public class MessageService {
 
     // 메시지 수신
 
-    public String readMessage(@Valid MessageReadDto messageReadDto) {
-        // DTO에서 엔터티로 변환
-        Message message = messageReadDto.toRead();
+    public void receiveMessage(Integer id, Integer receiverId) {
+        int updatedRows = messageRepository.updateMessageReceive(id, receiverId);
 
-        log.debug("Converted Message: {}", message);
-
-        // 메시지 읽음 상태 업데이트
-        messageRepository.updateMessageRead(message);
-
-        return "";
+        if (updatedRows == 0) {
+            throw new IllegalArgumentException("메시지가 존재하지 않거나, 수신자 ID가 일치하지 않습니다.");
+        }
     }
 
     //메시지 삭제

@@ -2,6 +2,7 @@ package com.cantata.tradetalent.repository;
 
 import com.cantata.tradetalent.domain.test.entity.Message;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,7 +13,8 @@ public interface MessageRepository {
     void sendMessage(Message message);
 
     // 메시지 수신
-    void updateMessageRead(Message messageReadDto);
+    int updateMessageReceive(@Param("id") Integer id, @Param("receiverId") Integer receiverId);
+
 
     // 메시지 삭제
     boolean deleteMessage(Long id);

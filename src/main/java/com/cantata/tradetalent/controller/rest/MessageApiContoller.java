@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/cantata/user")
@@ -33,14 +34,19 @@ public class MessageApiContoller {
 
     // 메시지 수신
 
-    @PutMapping("/{id}")
-    public ResponseEntity<?> readMessage(
-            @PathVariable int id,
-            @RequestBody @Valid MessageReadDto messageReadDto) {
+    @PutMapping("/receive")
+    public ResponseEntity<?> receiveMessage(@RequestBody Map<String, Object> request) {
+        Integer id = (Integer) request.get("id");
+        Integer receiverId = (Integer) request.get("receiverId");
 
-        messageReadDto.setMessageId(id);  // PathVariable로 전달된 ID를 DTO에 설정
-        messageService.readMessage(messageReadDto);
-        return ResponseEntity.ok("메시지 상태가 업데이트되었습니다.");
+        if (id == null || receiverId == null) {
+            return ResponseEntity.badRequest().body("id와 receiverId는 필수입니다.");
+        }
+
+        // 서비스 호출
+        messageService.receiveMessage(id, receiverId);
+
+        return ResponseEntity.ok("메시지가 수신 처리되었습니다.");
     }
 
     //메시지 삭제
