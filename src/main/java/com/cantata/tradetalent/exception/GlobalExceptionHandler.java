@@ -93,6 +93,20 @@ public class GlobalExceptionHandler {
                 .body(response);
     }
 
+    // 회원 관련
+    @ExceptionHandler(UserException.class)
+    public ResponseEntity<ErrorResponse> handleUserException(
+            UserException e, HttpServletRequest request) {
+
+        log.error("UserException occurred: {}", e.getMessage(), e);
+
+        ErrorResponse response = createErrorResponse
+                (e, request, e.getErrorCode().getStatus(), e.getMessage());
+        return ResponseEntity
+                .status(e.getErrorCode().getStatus())
+                .body(response);
+    }
+
     // 권한 부족 예외 처리 (커스텀처리)
 //    @ExceptionHandler(AuthorizationException.class)
 //    public ResponseEntity<?> handleAuthorizationException(AuthorizationException e, HttpServletRequest request) {

@@ -1,6 +1,9 @@
 package com.cantata.tradetalent.exception;
 
 
+import lombok.Getter;
+
+@Getter
 public class UserException extends RuntimeException {
     private final ErrorCode errorCode;
 
