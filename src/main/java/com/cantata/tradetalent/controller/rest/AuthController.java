@@ -14,12 +14,12 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/cantata")
-public class UserController {
+@RequestMapping("/api/cantata/auth")
+public class AuthController {
 
     private final UserService userService;
 
-    @PostMapping("/user")
+    @PostMapping("/signup")
     public ResponseEntity<Map<String, String>> createUser(
             @RequestBody @Valid SignUpRequest signUp
             ){
