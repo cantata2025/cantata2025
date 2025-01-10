@@ -1,215 +1,116 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="../../../../resources/static/css/components/newlesson.css">
-</head>
-<body>
-  <header>
-    <div class="head-container">
-      <div class="head-wrap">
-        <div class="logo">
-          <span>TradeTalent</span>
-        </div>
-        <ul class="nav">
-          <li><a href="#">프로필</a></li>
-          <li><a href="#">메세지</a></li>
-          <li><a href="#">레슨등록</a></li>
-          <li><a href="#">알아보기</a></li>
-        </ul>
-        <div class="search-wrap">
-          <button type="button">
-            <span>검색할 내용을 입력하세요</span>
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-        <a class="logout" href="#">Logout</a>
-      </div>
-    </div>
-  </header>
-  <main>
-    <div id="main-wrap">
-      <div class="new-lesson">
-        <p>새로운 레슨 개설하기</p> 
-        <form id="new-lesson-form" novalidate>
-          <div class="form-filed">
-          <p>레슨을 함께할 위치</p>
-          <input type="text">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="../../../../resources/static/css/components/newlesson.css"
+    />
+    <script
+      src="../../../../resources/static/js/pages/newlesson.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="head-container">
+        <div class="head-wrap">
+          <div class="logo">
+            <span>TradeTalent</span>
           </div>
-          <div class="form-filed">
-          <p>가르쳐 줄 과목</p>
-          <!-- 대분류: 외국어 -->
-<div class="category">
-  <div class="main-category">외국어</div>
-  <div class="skills">
-    <div class="skill">영어</div>
-    <div class="skill">일본어</div>
-    <div class="skill">중국어</div>
-    <div class="skill">프랑스어</div>
-    <div class="skill">독일어</div>
-    <div class="skill">스페인어</div>
-    <div class="skill">한국어</div>
-    <div class="skill">러시아어</div>
-    <div class="skill">이태리어</div>
-    <div class="skill">태국어</div>
-    <div class="skill">베트남어</div>
-    <div class="skill">그리스어</div>
-  </div>
-</div>
-
-<!-- 대분류: 음악 -->
-<div class="category">
-  <div class="main-category">음악</div>
-  <div class="skills">
-    <div class="skill">피아노</div>
-    <div class="skill">재즈</div>
-    <div class="skill">기타</div>
-    <div class="skill">베이스</div>
-    <div class="skill">바이올린</div>
-    <div class="skill">첼로</div>
-    <div class="skill">플롯</div>
-    <div class="skill">오보에</div>
-    <div class="skill">섹소폰</div>
-    <div class="skill">드럼</div>
-    <div class="skill">클라리넷</div>
-    <div class="skill">국악</div>
-    <div class="skill">보컬</div>
-    <div class="skill">성악</div>
-    <div class="skill">작곡</div>
-    <div class="skill">화성학</div>
-    <div class="skill">미디</div>
-  </div>
-</div>
-
-<!-- 대분류: 라이프 -->
-<div class="category">
-  <div class="main-category">라이프</div>
-  <div class="skills">
-    <div class="skill">미술</div>
-    <div class="skill">요리</div>
-    <div class="skill">일러스트</div>
-    <div class="skill">디자인</div>
-    <div class="skill">꽃</div>
-    <div class="skill">공예</div>
-    <div class="skill">패션</div>
-    <div class="skill">캘리그라피</div>
-  </div>
-</div>
-
-<!-- 대분류: IT -->
-<div class="category">
-  <div class="main-category">IT</div>
-  <div class="skills">
-    <div class="skill">영상편집</div>
-    <div class="skill">프로그래밍</div>
-    <div class="skill">포토샵</div>
-    <div class="skill">MS오피스</div>
-    <div class="skill">3D/캐드</div>
-  </div>
-</div>
-
-<!-- 대분류: 전문지식 -->
-<div class="category">
-  <div class="main-category">전문지식</div>
-  <div class="skills">
-    <div class="skill">심리학</div>
-    <div class="skill">역사학</div>
-    <div class="skill">의학</div>
-    <div class="skill">경제학</div>
-    <div class="skill">철학</div>
-    <div class="skill">물리학</div>
-    <div class="skill">경영학</div>
-    <div class="skill">마케팅</div>
-  </div>
-</div>
-
-<!-- 대분류: 스포츠 -->
-<div class="category">
-  <div class="main-category">스포츠</div>
-  <div class="skills">
-    <div class="skill">수영</div>
-    <div class="skill">헬스</div>
-    <div class="skill">요가/필라테스</div>
-    <div class="skill">골프</div>
-    <div class="skill">테니스</div>
-    <div class="skill">승마</div>
-    <div class="skill">스키</div>
-    <div class="skill">볼링</div>
-  </div>
-</div>
-
-<!-- 대분류: 교육 -->
-<div class="category">
-  <div class="main-category">교육</div>
-  <div class="skills">
-    <div class="skill">학습지도</div>
-    <div class="skill">언어학습</div>
-    <div class="skill">유아교육/놀이</div>
-    <div class="skill">직업/커리어 상담</div>
-    <div class="skill">시험/자격증 준비</div>
-  </div>
-</div>
-
-<!-- 대분류: 공연 -->
-<div class="category">
-  <div class="main-category">공연</div>
-  <div class="skills">
-    <div class="skill">연기</div>
-    <div class="skill">마술</div>
-    <div class="skill">디제잉</div>
-    <div class="skill">댄스</div>
-    <div class="skill">스쿠버다이빙</div>
-    <div class="skill">스케이트보드</div>
-  </div>
-</div>
-
+          <ul class="nav">
+            <li><a href="#">프로필</a></li>
+            <li><a href="#">메세지</a></li>
+            <li><a href="#">레슨등록</a></li>
+            <li><a href="#">알아보기</a></li>
+          </ul>
+          <div class="search-wrap">
+            <button type="button">
+              <span>검색할 내용을 입력하세요</span>
+              <i class="fas fa-search"></i>
+            </button>
           </div>
-          <div class="form-filed">
-          <p>배우고 싶은 과목</p>
-          <div class="category-container">
-            <button class="category" id="language">외국어</button>
-            <button class="category" id="music">음악</button>
-            <button class="category" id="life">라이프</button>
-            <button class="category" id="it">IT</button>
-            <button class="category" id="expert">전문지식</button>
-            <button class="category" id="sports">스포츠</button>
-            <button class="category" id="education">교육</button>
-            <button class="category" id="perform">공연</button>
-          </div>
-          </div>
-          <div class="form-filed">
-          <p>전달할 내용</p>
-          <textarea name="content" id="content" placeholder="자세한 내용을 작성해 주세요."></textarea>
-          </div>
-        </form>
-      </div>
-    </div>
-  </main>
-  <footer>
-    <div class="foot-container">
-      <div class="contact-us">
-        <div class="contact-us-title"><span>Contact Us</span><div class="github-logo"></div></div>
-        <div class="github-urls">
-          <p>김성윤 : <a href="#">https://github.com/cafephilia</a></p>
-          <p>김정학 : <a href="#">https://github.com/</a></p>
-          <p>오세영 : <a href="#">https://github.com/seyoung0314</a></p>
-          <p>유안준 : <a href="#">https://github.com/</a></p>
+          <a class="logout" href="#">Logout</a>
         </div>
       </div>
-      <div class="policies">
-        <a href="#">이용약관</a>
-        <a href="#">개인정보처리방침</a>
-        <a href="#">운영정책</a>
-        <a href="#">위치기반서비스 이용약관</a>
-        <a href="#">이용자보호정책</a>
+    </header>
+    <main>
+      <div id="main-wrap">
+        <div class="new-lesson">
+          <p>새로운 레슨 개설하기</p>
+          <form id="new-lesson-form" novalidate>
+            <div class="form-filed">
+              <p>레슨을 함께할 위치</p>
+              <input type="text" />
+            </div>
+            <div class="form-filed">
+              <p>가르쳐 줄 과목</p>
+              <div class="category-container">
+                <button class="category" id="language">외국어</button>
+                <button class="category" id="music">음악</button>
+                <button class="category" id="life">라이프</button>
+                <button class="category" id="it">IT</button>
+                <button class="category" id="expert">전문지식</button>
+                <button class="category" id="sports">스포츠</button>
+                <button class="category" id="education">교육</button>
+                <button class="category" id="perform">공연</button>
+            </div>
+            <div class="form-filed">
+              <p>배우고 싶은 과목</p>
+              <div class="category-container">
+                <button class="category" id="language">외국어</button>
+                <button class="category" id="music">음악</button>
+                <button class="category" id="life">라이프</button>
+                <button class="category" id="it">IT</button>
+                <button class="category" id="expert">전문지식</button>
+                <button class="category" id="sports">스포츠</button>
+                <button class="category" id="education">교육</button>
+                <button class="category" id="perform">공연</button>
+              </div>
+              <div class="main-category">
+              <div id="skill-receive">
+                <!-- 스크립트로 하위 카테고리 호출 -->
+              </div>
+            </div>
+            <div class="form-filed">
+              <p>전달할 내용</p>
+              <textarea
+                name="content"
+                id="content"
+                placeholder="자세한 내용을 작성해 주세요."
+              ></textarea>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-  </footer>
-  <div class="modal-overlay"></div> <!-- 배경 레이어 -->
-  <div class="modal-content">
-    
-  </div>
-</body>
+    </main>
+    <footer>
+      <div class="foot-container">
+        <div class="contact-us">
+          <div class="contact-us-title">
+            <span>Contact Us</span>
+            <div class="github-logo"></div>
+          </div>
+          <div class="github-urls">
+            <p>김성윤 : <a href="#">https://github.com/cafephilia</a></p>
+            <p>김정학 : <a href="#">https://github.com/</a></p>
+            <p>오세영 : <a href="#">https://github.com/seyoung0314</a></p>
+            <p>유안준 : <a href="#">https://github.com/</a></p>
+          </div>
+        </div>
+        <div class="policies">
+          <a href="#">이용약관</a>
+          <a href="#">개인정보처리방침</a>
+          <a href="#">운영정책</a>
+          <a href="#">위치기반서비스 이용약관</a>
+          <a href="#">이용자보호정책</a>
+        </div>
+      </div>
+    </footer>
+    <div class="modal-overlay"></div>
+    <!-- 배경 레이어 -->
+    <div class="modal-content"></div>
+  </body>
 </html>

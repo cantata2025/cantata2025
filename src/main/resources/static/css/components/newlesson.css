@@ -59,16 +59,19 @@ main{
   padding: 10px;
   display: flex;
 }
-button.category{
+button{
   height: 30px;
   padding: 0 10px;
   font-size: 17px;
   background: #fff;
   border: none;
   border-radius: 5px;
-  color: #fff;
   cursor: pointer;
-  margin: 0 5px;
+  margin: auto 5px;
+  font-weight: 600;
+}
+button.category{
+  color: #fff;
 }
 
 /* .category {
@@ -120,4 +123,32 @@ footer{
   display: flex;
   justify-content: center;
   color: #868b94;
+}
+
+.skill-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px;
+}
+
+.skill {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background-color: rgb(88, 165, 190);
+  cursor: pointer;
+  height: 30px;
+  padding: 0 10px;
+  font-size: 17px;
+  border: none;
+  border-radius: 7px;
+  margin: 5px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.skill.appear {
+  opacity: 1;
+  transform: translateY(0);
 }
