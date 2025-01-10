@@ -28,11 +28,10 @@ public class MessageService {
     }
 
     // 메시지 수신
-
     public void receiveMessage(Integer id, Integer receiverId) {
-        int updatedRows = messageRepository.updateMessageReceive(id, receiverId);
-
-        if (updatedRows == 0) {
+        int messageReceive = messageRepository.updateMessageReceive(id, receiverId);
+            //메시지와 수신자 ID가 일치하지 않을 때
+        if (messageReceive == 0) {
             throw new IllegalArgumentException("메시지가 존재하지 않거나, 수신자 ID가 일치하지 않습니다.");
         }
     }
@@ -40,6 +39,7 @@ public class MessageService {
     //메시지 삭제
     public void remove(Long id){
         boolean removed = messageRepository.deleteMessage(id);
+        //DB안에 id가 존재하지 않을 때
         if (!removed) {
             throw new IllegalStateException("해당 id는 존재하지 않습니다. = " + id);
         }

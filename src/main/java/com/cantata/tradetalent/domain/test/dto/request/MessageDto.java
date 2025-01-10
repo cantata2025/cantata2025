@@ -22,6 +22,11 @@ public class MessageDto {
     private String content; // 쪽지내용
 
 
+    /**
+     * DTO를 Message 엔터티로 변환하는 메서드
+     *
+     * @return Message 엔터티 객체
+     */
     public Message toMessage() {
         return Message.builder()
                 .senderId(this.senderId)

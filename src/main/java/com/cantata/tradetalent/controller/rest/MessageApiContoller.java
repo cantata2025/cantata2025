@@ -53,7 +53,7 @@ public class MessageApiContoller {
     @PutMapping("/remove/{id}")
     public ResponseEntity<?> removeMessage(
             @PathVariable Long id,
-            @Valid Message message){
+            @Valid Message message) {
 
         message.setId(id);
         messageService.remove(id);
