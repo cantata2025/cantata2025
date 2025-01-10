@@ -1,0 +1,123 @@
+@import url(./header.css);
+@import url(./footer.css);
+@import url(../common.css);
+body{
+  font-family: "Noto Sans KR", serif;
+}
+main{
+  display: flex;
+  justify-content: center;
+}
+#main-wrap{
+  width: 65%;
+  display: flex;
+  justify-content: center;  
+  flex-direction: column;
+  border: 1px solid #000;
+  margin-top: 150px;
+  padding: 40px;
+}
+.new-lesson{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  line-height: 1.5;
+}
+.new-lesson>p{
+  font-size: 20px;
+  font-weight: 500;
+  margin: 20px 0;
+}
+#new-lesson-form{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.form-filed{
+  width: 100%;
+}
+.skill{
+  display: inline;
+  border: 1px solid #000;
+  padding: 3px;
+  border-radius: 10%;
+}
+.skills{
+  margin: 5px 0;
+}
+#content{
+  width: 100%;
+  height: 300px;
+  resize: none;
+  padding: 20px;
+  font-size: 20px;
+  border: 1px solid #5f5f5f;
+}
+.category-container {
+  padding: 10px;
+  display: flex;
+}
+button.category{
+  height: 30px;
+  padding: 0 10px;
+  font-size: 17px;
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+/* .category {
+  font-size: 16px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  
+} */
+
+#language {
+  background-color: #4682B4; /* 스틸 블루 */
+}
+
+#music {
+  background-color: #B8860B; /* 다크 골든로드 */
+}
+
+#life {
+  background-color: #228B22; /* 포레스트 그린 */
+}
+
+#it {
+  background-color: #6A5ACD; /* 슬레이트 블루 */
+}
+
+#expert {
+  background-color: #CD5C5C; /* 인디언 레드 */
+}
+
+#sports {
+  background-color: #2F4F4F; /* 다크 슬레이트 그레이 */
+}
+
+#education {
+  background-color: #8B4513; /* 새들 브라운 */
+}
+
+#perform {
+  background-color: #8B008B; /* 다크 마젠타 */
+}
+
+.category:hover {
+  opacity: 0.8; /* 호버 시 약간 어둡게 */
+}
+
+footer{
+  display: flex;
+  justify-content: center;
+  color: #868b94;
+}
