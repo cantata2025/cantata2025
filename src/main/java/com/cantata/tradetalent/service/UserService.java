@@ -27,7 +27,20 @@ public class UserService {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    public void signUp(SignUpRequest signUpRequest){
+
+    public void signUp(SignUpRequest signUpRequest) {
+
+
+        // rade condition 방지
+        userRepository.findByEmail(signUpRequest.getEmail())
+                .ifPresent(m -> {
+                    throw new UserException(ErrorCode.DUPLICATE_EMAIL);
+                });
+
+        userRepository.findByName(signUpRequest.getName())
+                .ifPresent(m -> {
+                    throw new UserException(ErrorCode.DUPLICATE_USERNAME);
+                });
 
         // 비밀번호 암호화하기
         // 숩수 비밀번호를 꺼내서 암호화
@@ -44,13 +57,13 @@ public class UserService {
     }
 
     public DuplicateCheckResponse checkDuplicate(String type, String value) {
-        log.info("------------------"+type+"--------"+value);
+        log.info("------------------" + type + "--------" + value);
         switch (type) {
             case "email":
                 // 중복된 경우를 클라이언트에게 알려야함
                 User user1 = userRepository.findByEmail(value)
                         .get();
-                log.info("uuuuuuuu : {}",user1);
+                log.info("uuuuuuuu : {}", user1);
                 return userRepository.findByEmail(value)
                         .map(user -> DuplicateCheckResponse.unavailable("이미 사용중인 이메일입니다.")) // null이 아닌 경우
                         .orElse(DuplicateCheckResponse.available());// null인 경우
@@ -71,9 +84,9 @@ public class UserService {
 
         User foundUser = userRepository.findByEmail(username)
                 .orElseGet(() -> userRepository.findByName(username)
-                                .orElseThrow(() ->
-                                        new UserException(ErrorCode.MEMBER_NOT_FOUND)
-                                ));
+                        .orElseThrow(() ->
+                                new UserException(ErrorCode.MEMBER_NOT_FOUND)
+                        ));
 
         // 사용자가 입력한 패스워드와 DB에 저장한 패스워드를 추출
         String inputPassword = loginRequest.getPassword();
