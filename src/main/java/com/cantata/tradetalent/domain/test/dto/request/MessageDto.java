@@ -27,6 +27,10 @@ public class MessageDto {
                 .senderId(this.senderId)
                 .receiverId(this.receiverId)
                 .content(this.content)
+                .createdAt(LocalDateTime.now())
+                .receivedAt(LocalDateTime.now())
+                .isRead(true)
+                .isDeleted(false)
                 .build();
     }
 }
