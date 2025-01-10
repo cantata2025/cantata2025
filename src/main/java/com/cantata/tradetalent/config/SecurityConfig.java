@@ -27,9 +27,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth
                                 // '/api/auth' 로 시작하는 요청은 인증을 필요로 하지 않음
-                                .requestMatchers("/api/cantata/auth/**").permitAll()
+//                                .requestMatchers("/api/cantata/auth/**").permitAll()
                                 // '/api' 로 시작하는 요청은 모두 인증은 필수로 처리
-                                .requestMatchers("/api/cantata/**").authenticated()
+//                                .requestMatchers("/api/cantata/**").authenticated()
                                 // 기타 (jsp,js, css, image....) 는 모두 허용
                                 .anyRequest().permitAll()
                 )
