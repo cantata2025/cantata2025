@@ -30,7 +30,7 @@
 .head-wrap .search-wrap{
   flex: 4;
 }
-.search-wrap button{
+.search-wrap #search-btn{
   width: 300px;
   height: 40px;
   border-radius: 5px;
