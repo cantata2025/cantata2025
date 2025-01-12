@@ -43,31 +43,48 @@
           <form id="new-lesson-form" novalidate>
             <div class="form-filed">
               <p>레슨을 함께할 위치</p>
-              <input type="text" />
+              <select id="area1" title="권역선택" class="boardSearch_select">
+                <option value="">권역선택</option>
+              </select>
+              <select id="area2" title="시도선택" class="boardSearch_select">
+                <option value="">시도선택</option>
+              </select>
+              <select id="area3" title="시군구선택" class="boardSearch_select">
+                <option value="">시군구선택</option>
+              </select>
             </div>
             <div class="form-filed">
-              <p>가르쳐 줄 과목</p>
+              <div>
+                <span>가르쳐 줄 과목 &nbsp;&nbsp;&nbsp;:</span>
+                <div id="selected-give" class="inline"></div>
+              </div>
               <div class="category-container">
-                <button class="category" id="language">외국어</button>
-                <button class="category" id="music">음악</button>
-                <button class="category" id="life">라이프</button>
-                <button class="category" id="it">IT</button>
-                <button class="category" id="expert">전문지식</button>
-                <button class="category" id="sports">스포츠</button>
-                <button class="category" id="education">교육</button>
-                <button class="category" id="perform">공연</button>
+                <button class="category give" id="language">외국어</button>
+                <button class="category give" id="music">음악</button>
+                <button class="category give" id="life">라이프</button>
+                <button class="category give" id="it">IT</button>
+                <button class="category give" id="expert">전문지식</button>
+                <button class="category give" id="sports">스포츠</button>
+                <button class="category give" id="education">교육</button>
+                <button class="category give" id="perform">공연</button>
+            </div>
+            <div id="skill-give">
+              <!-- 스크립트로 하위 카테고리 호출 -->
             </div>
             <div class="form-filed">
-              <p>배우고 싶은 과목</p>
+              <div>
+                <span>배우고 싶은 과목 :</span>
+                <div id="selected-receive" class="inline"></div>
+              </div>
               <div class="category-container">
-                <button class="category" id="language">외국어</button>
-                <button class="category" id="music">음악</button>
-                <button class="category" id="life">라이프</button>
-                <button class="category" id="it">IT</button>
-                <button class="category" id="expert">전문지식</button>
-                <button class="category" id="sports">스포츠</button>
-                <button class="category" id="education">교육</button>
-                <button class="category" id="perform">공연</button>
+                <button class="category receive" id="language">외국어</button>
+                <button class="category receive" id="music">음악</button>
+                <button class="category receive" id="life">라이프</button>
+                <button class="category receive" id="it">IT</button>
+                <button class="category receive" id="expert">전문지식</button>
+                <button class="category receive" id="sports">스포츠</button>
+                <button class="category receive" id="education">교육</button>
+                <button class="category receive" id="perform">공연</button>
               </div>
               <div class="main-category">
               <div id="skill-receive">
@@ -82,6 +99,7 @@
                 placeholder="자세한 내용을 작성해 주세요."
               ></textarea>
             </div>
+            <div class="submit-container"><button id="submit" type="submit">작성하기</button></div>
           </form>
         </div>
       </div>
