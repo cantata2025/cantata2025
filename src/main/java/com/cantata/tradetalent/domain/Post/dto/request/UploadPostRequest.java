@@ -1,7 +1,10 @@
 package com.cantata.tradetalent.domain.Post.dto.request;
 
+import com.cantata.tradetalent.domain.Post.entity.Post;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Getter @Setter
 @NoArgsConstructor
@@ -9,7 +12,9 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 @Builder
-public class uploadPostRequest {
+public class UploadPostRequest {
+
+    private Long id;  // 자동 생성된 id를 저장할 필드
 
     @JsonProperty("email")
     String email;
@@ -24,21 +29,12 @@ public class uploadPostRequest {
     String district;  // 남구
 
     @JsonProperty("giveCategory")
-    String Category_give;   // 영어
+    String categoryGive;   // 영어
 
     @JsonProperty("receiveCategory")
-    String Category_take;   // 태권도
+    String categoryTake;   // 태권도
 
     @JsonProperty("contentText")
     String content;
-
-    //const newLessonData = {
-//        area1: area1,//광역
-//        area2: area2,//시도
-//        area3: area3,//시구군
-//        giveCategory: giveCategory,
-//        receiveCategory: receiveCategory,
-//        contentText: contentText,
-//    }
-
 }
+

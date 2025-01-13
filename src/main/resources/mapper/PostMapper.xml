@@ -3,15 +3,15 @@
 <mapper namespace="com.cantata.tradetalent.repository.PostRepository">
 
     <!-- 게시글 등록 쿼리 -->
-    <insert id="savePost" keyProperty="id" useGeneratedKeys="true">
+    <insert id="savePost" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO posts (region, category_id_give, category_id_take, content, writer)
         VALUES (
         (SELECT id FROM region_categories
         WHERE region_group_name = #{region}
         AND province_name = #{province}
         AND district_name = #{district}) ,
-        (SELECT id FROM categories WHERE sub_category_name =#{subCategoryName}),
-        (SELECT id FROM categories WHERE sub_category_name =#{subCategoryName}),
+        (SELECT id FROM categories WHERE sub_category_name =#{categoryGive}),
+        (SELECT id FROM categories WHERE sub_category_name =#{categoryTake}),
         #{content}, #{email}
         )
     </insert>

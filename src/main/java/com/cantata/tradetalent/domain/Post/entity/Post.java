@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 public class Post {
     private Long id;                      // pk
     private String region;                // 지역 (필수값)
-    private int categoryIdGive;           // 줄 수 있는 카테고리 번호 (필수값)
-    private int categoryIdTake;           // 받고 싶은 카테고리 번호 (필수값)
+    private String categoryIdGive;           // 줄 수 있는 카테고리 번호 (필수값)
+    private String categoryIdTake;           // 받고 싶은 카테고리 번호 (필수값)
     private String content;               // 내용 (필수값)
     private String writer;                // 작성자 (필수값)
     private int viewCount;            // 조회수, 기본값 0
