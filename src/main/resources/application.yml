@@ -1,0 +1,38 @@
+server:
+  port: 8900
+
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/instagram_clone
+    username: root
+    password: mariadb
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: com.example.instagramclone.domain
+  mapper-locations: classpath:mapper/**/*.xml
+
+logging:
+  level:
+    com:
+      example:
+        instagramclone: debug
+
+file:
+  upload:
+    location: ${user.home}/instagram-clone/uploads/
+
+jwt:
+  secret-key: L6h/xMxGO53HQmR/OB99qR/y0kTr2CAyaI5RqBIX184=  # 토큰발급시와 토큰위조검사시 사용할 서명
+  access-token-validity-time: 3600000  # 1시간
+  refresh-token-validity-time: 604800000 # 7일
