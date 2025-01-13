@@ -72,6 +72,8 @@ function renderSubCategories(container, categoryId) {
 $giveButtons.forEach(button => {
   button.addEventListener('click', e => {
     e.preventDefault();
+    $giveButtons.forEach(button=>button.classList.remove('category-selected'));
+    e.target.classList.add('category-selected');
     const categoryId = button.id;
     renderSubCategories($skillGive, categoryId);
     addSelectEvent();
@@ -81,6 +83,8 @@ $giveButtons.forEach(button => {
 $receiveButtons.forEach(button => {
   button.addEventListener('click', e => {
     e.preventDefault();
+    $receiveButtons.forEach(button=>button.classList.remove('category-selected'));
+    e.target.classList.add('category-selected');
     const categoryId = button.id;
     renderSubCategories($skillReceive, categoryId);
     addSelectEvent();
@@ -100,15 +104,15 @@ function addSelectEvent(){
     renderSelectedBtn(giveCheck,'give');
   })
 })
-$receiveSkills.forEach(skill=>{
-  skill.addEventListener('click',e=>{
-    e.preventDefault();
-    $receiveSkills.forEach(skill=>{
-      skill.classList.remove('selected');
-    })
-    e.target.classList.add('selected');
-    receiveCheck=e.target.textContent;
-    renderSelectedBtn(receiveCheck,'receive');
+  $receiveSkills.forEach(skill=>{
+    skill.addEventListener('click',e=>{
+      e.preventDefault();
+      $receiveSkills.forEach(skill=>{
+        skill.classList.remove('selected');
+      })
+      e.target.classList.add('selected');
+      receiveCheck=e.target.textContent;
+      renderSelectedBtn(receiveCheck,'receive');
   })
 })
 }

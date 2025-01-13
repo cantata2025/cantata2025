@@ -19,18 +19,18 @@ spring:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
-  type-aliases-package: com.example.instagramclone.domain
+  type-aliases-package: com.cantata.tradetalent.domain
   mapper-locations: classpath:mapper/**/*.xml
 
 logging:
   level:
     com:
-      example:
-        instagramclone: debug
+      cantata:
+        tradetalent: debug
 
 file:
   upload:
-    location: ${user.home}/instagram-clone/uploads/
+    location: ${user.home}/tradetalent/uploads/
 
 jwt:
   secret-key: L6h/xMxGO53HQmR/OB99qR/y0kTr2CAyaI5RqBIX184=  # 토큰발급시와 토큰위조검사시 사용할 서명

@@ -83,6 +83,7 @@ button{
 }
 button.category{
   color: #fff;
+  margin: 0 5px;
 }
 
 /* .category {
@@ -126,6 +127,9 @@ button.category{
   background-color: #3A1078;
 }
 
+.category-container>.category-selected{
+  transform: scale(1.2);
+}
 .category:hover {
   opacity: 0.8; /* 호버 시 약간 어둡게 */
 }
