@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class CategoryTest {
+public class Category {
     private int id;
     private int mainCategory;
     private String mainCategoryName;

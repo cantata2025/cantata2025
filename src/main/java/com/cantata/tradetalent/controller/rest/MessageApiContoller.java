@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/cantata/user")
+@RequestMapping("/api/cantata/message")
 @Slf4j
 @RequiredArgsConstructor
 
@@ -46,7 +46,7 @@ public class MessageApiContoller {
         return ResponseEntity.ok("메시지가 수신 처리되었습니다.");
     }
 
-    //메시지 삭제
+    //메시지 삭제(삭제시 isDeleted = 1)
     @PutMapping("/remove/{id}")
     public ResponseEntity<?> removeMessage(
             @PathVariable Long id,
