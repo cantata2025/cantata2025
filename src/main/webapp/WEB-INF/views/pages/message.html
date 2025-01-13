@@ -9,7 +9,7 @@
       href="../../../../resources/static/css/components/message.css"
     />
     <script
-      src="../../../../resources/static/js/pages/newlesson.js"
+      src="../../../../resources/static/js/pages/message.js"
       defer
     ></script>
   </head>
@@ -44,26 +44,26 @@
           <div class="board">
             <!-- Header -->
             <div class="board-header">
-              <div>체크</div>
-              <div>보낸 사람</div>
-              <div>내용</div>
-              <div>날짜</div>
+              <div class="check">체크</div>
+              <div class="sender">보낸 사람</div>
+              <div class="content">내용</div>
+              <div class="date">날짜</div>
             </div>
         
             <!-- Item 1 -->
             <div class="board-item">
-              <div><input type="checkbox"></div>
-              <div>홍길동</div>
-              <div>안녕하세요. 이 메시지는 예시입니다.</div>
-              <div>2025-01-13</div>
+              <div class="check"><input type="checkbox"></div>
+              <div class="sender">폼폼푸린</div>
+              <div class="content">샘플 메세지입니다.</div>
+              <div class="date">2025-01-13</div>
             </div>
         
             <!-- Item 2 -->
             <div class="board-item">
-              <div><input type="checkbox"></div>
-              <div>김철수</div>
-              <div>확인 부탁드립니다.</div>
-              <div>2025-01-12</div>
+              <div class="check"><input type="checkbox"></div>
+              <div class="sender">쿠루미</div>
+              <div class="content">누르면 모달이 나옵니다.</div>
+              <div class="date">2025-01-12</div>
             </div>
         
             <!-- Empty message -->
@@ -102,6 +102,10 @@
     </footer>
     <div class="modal-overlay"></div>
     <!-- 배경 레이어 -->
-    <div class="modal-content"></div>
+    <div class="modal-content">
+      <i class="fas fa-times"></i>
+      <p id="message-content"></p>
+      <button>답장하기</button>
+    </div>
   </body>
 </html>

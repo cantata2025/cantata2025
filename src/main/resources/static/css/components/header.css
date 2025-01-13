@@ -11,6 +11,8 @@
   position: fixed;
   background: #fff;
   z-index: 2;
+  border-bottom: 1px solid rgb(219,219,219);
+
 }
 .head-wrap .logo{
   flex: 1;
