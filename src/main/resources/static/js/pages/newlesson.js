@@ -176,12 +176,41 @@ document.addEventListener('DOMContentLoaded',()=>{
   renderArea1Select();
   renderArea2Select();
   renderArea3Select();
-  document.getElementById('submit').addEventListener('click', e=>{
-    e.preventDefault();
-    if($area3.value==='' || $selectedGive==='' || $selectedReceive===''){
-      alert('위치/과목은 필수입니다!')
-    }else{
-      alert('정상적으로 게시되었습니다!')
-    }
-  })
 })
+//작성하기 버튼 누르면
+document.getElementById('submit').addEventListener('click', e=>{
+  e.preventDefault();
+  if($area3.value==='' || $selectedGive==='' || $selectedReceive===''){
+    alert('위치/과목은 필수입니다!')
+  }else{
+    const area1 = $area1.value;
+    const area2 = $area2.value;
+    const area3 = $area3.value;
+    const giveCategory = $selectedGive.textContent;
+    const receiveCategory = $selectedReceive.textContent;
+    const contentText = document.getElementById('content').value;
+    const newLessonData = {
+        area1: area1,//광역
+        area2: area2,//시도
+        area3: area3,//시구군
+        giveCategory: giveCategory,
+        receiveCategory: receiveCategory,
+        contentText: contentText,
+    }
+    fetchToNewLesson(newLessonData);
+    console.log(newLessonData);
+  }
+})
+// 새로운 개설 정보를 서버로 전송
+async function fetchToNewLesson(newLessonData) {
+  const response = await fetch('/api/??', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newLessonData)
+  });
+
+  const data = await response.json();
+  
+  alert('정상적으로 게시되었습니다!');
+  window.location.href = '/'; // 로그인 페이지 이동
+}
