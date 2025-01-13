@@ -15,9 +15,11 @@
         WHERE pk = #{id} AND receiver_id = #{receiverId};
     </update>
 <!--메시지 삭제 query-->
-    <delete id="deleteMessage">
-        DELETE FROM messages
+    <update id="deleteMessage">
+        UPDATE messages
+        SET is_deleted = TRUE
         WHERE pk = #{id}
-    </delete>
+    </update>
+
 
 </mapper>

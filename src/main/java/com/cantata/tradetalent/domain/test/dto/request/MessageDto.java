@@ -34,7 +34,7 @@ public class MessageDto {
                 .content(this.content)
                 .createdAt(LocalDateTime.now())
                 .receivedAt(LocalDateTime.now())
-                .isRead(true)
+                .isRead(false)
                 .isDeleted(false)
                 .build();
     }

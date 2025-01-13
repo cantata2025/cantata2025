@@ -17,6 +17,5 @@ public interface MessageRepository {
 
 
     // 메시지 삭제
-    boolean deleteMessage(Long id);
-
+    int deleteMessage(Long id);
 }
