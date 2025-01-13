@@ -1,5 +1,6 @@
 package com.cantata.tradetalent.config;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
 @Configuration
 @EnableWebSecurity   // 커스텀 시큐리티 설정파일
+@RequiredArgsConstructor
 public class SecurityConfig {
 
     //시큐리티 필터체인 빈을 등록

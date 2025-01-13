@@ -1,10 +1,13 @@
 package com.cantata.tradetalent.jwt;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import javax.crypto.SecretKey;
@@ -14,6 +17,7 @@ import java.util.Date;
 // 전송된 토큰의 위조 및 만료시간을 검사하는 역할
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class JwtTokenProvider {
 
     private  final JwtProperties jwtProperties;
@@ -52,7 +56,44 @@ public class JwtTokenProvider {
                 .setIssuedAt(now)   // 발급시간
                 .setExpiration(validity)    //만료시간
                 .setSubject(username)   // 이 토큰을 구별할 유니크한 값
+                .signWith(key)  // 서명
                 .compact()
                 ;
+    }
+    /**
+     * 토큰이 유효한지 검증하는 메서드
+     * @param token JWT 토큰
+     * @return 토큰이 정상이면 true, 만료되었거나 위조되었다면 false
+     */
+    public boolean validateToken(String token) {
+        try {
+            parseClaims(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            log.warn("invalid token: {}", e.getMessage(), e);
+            return false;
+        }
+    }
+    /**
+     * 검증된 토큰에서 사용자이름을 추출하는 메서드
+     * @param token - 인증 토큰
+     * @return 토큰에서 추출한 사용자 이름
+     */
+    public String getCurrentLoginUsername(String token) {
+        return parseClaims(token).getSubject();
+    }
+    /**
+     * 내부적으로 토큰을 파싱하여 Claims 객체를 반환하는 메서드입니다.
+     *
+     * @param token JWT 토큰
+     * @return 파싱된 Claims 객체
+     * @throws JwtException 토큰이 유효하지 않은 경우 발생
+     */
+    private Claims parseClaims(String token) {
+        return Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody();
     }
 }

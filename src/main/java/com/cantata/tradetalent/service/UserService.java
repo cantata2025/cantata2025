@@ -102,7 +102,7 @@ public class UserService {
         return Map.of(
                 "message", "로그인에 성공했습니다.",
                 "username", foundUser.getEmail(),
-                "accessToken", jwtTokenProvider.createAccessToken(username)
+                "accessToken", jwtTokenProvider.createAccessToken(foundUser.getEmail())
         );
     }
 }
