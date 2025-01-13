@@ -134,10 +134,17 @@ function renderArea1Select(){
     $newOption.setAttribute('value',area);
     $area1.appendChild($newOption);
   })
-
 }
 function renderArea2Select(){
   $area1.addEventListener('change',e=>{
+    // area2 초기화
+    $area2.querySelectorAll('option').forEach((option,index)=>{
+      if(index!==0) option.remove();
+    })
+    // area3 초기화
+    $area3.querySelectorAll('option').forEach((option,index)=>{
+      if(index!==0) option.remove();
+    })
     Object.keys(area[e.target.value]).forEach(area=>{
       $newOption = document.createElement('option');
       $newOption.textContent = area;
@@ -148,6 +155,10 @@ function renderArea2Select(){
 }
 function renderArea3Select(){
   $area2.addEventListener('change',e=>{
+    // area3 초기화
+    $area3.querySelectorAll('option').forEach((option,index)=>{
+      if(index!==0) option.remove();
+    })
     area[$area1.value][e.target.value].forEach(area=>{
       $newOption = document.createElement('option');
       $newOption.textContent = area;
