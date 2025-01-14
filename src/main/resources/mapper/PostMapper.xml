@@ -32,6 +32,37 @@
         ORDER BY created_at DESC, id DESC;
     </select>
 
+    <!-- 게시물 키워드 조회  -->
+    <select id="findByKeyword" resultType="Post">
+        SELECT p.*
+        FROM posts p
+        LEFT JOIN categories give_category ON p.category_id_give = give_category.id
+        LEFT JOIN categories take_category ON p.category_id_take = take_category.id
+        LEFT JOIN region_categories region ON p.region = region.id
+        WHERE 1=1
+
+        <choose>
+            <when test="option == 'content'">
+                AND p.content LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+            <when test="option == 'giveCategory'">
+                AND give_category.sub_category_name LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+            <when test="option == 'takeCategory'">
+                AND take_category.sub_category_name LIKE CONCAT('%', #{keyword}, '%')
+            </when>
+            <when test="option == 'region'">
+                AND (
+                region.region_group_name LIKE CONCAT('%', #{keyword}, '%')
+                OR region.province_name LIKE CONCAT('%', #{keyword}, '%')
+                OR region.district_name LIKE CONCAT('%', #{keyword}, '%')
+                )
+            </when>
+        </choose>
+    </select>
+
+
+
     <!-- 게시물 삭제 쿼리 -->
     <update id="deletePost">
         UPDATE posts

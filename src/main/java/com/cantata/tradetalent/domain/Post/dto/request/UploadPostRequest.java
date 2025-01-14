@@ -17,24 +17,24 @@ public class UploadPostRequest {
     private int id;  // 자동 생성된 id를 저장할 필드
 
     @JsonProperty("email")
-    String email;
+    private String email;
 
     @JsonProperty("area1")
-    String region;          // 경상권
+    private String region;          // 경상권
 
     @JsonProperty("area2")
-    String province;  // 부산광역시
+    private String province;  // 부산광역시
 
     @JsonProperty("area3")
-    String district;  // 남구
+    private String district;  // 남구
 
     @JsonProperty("giveCategory")
-    String categoryGive;   // 영어
+    private String categoryGive;   // 영어
 
     @JsonProperty("receiveCategory")
-    String categoryTake;   // 태권도
+    private String categoryTake;   // 태권도
 
     @JsonProperty("contentText")
-    String content;
+    private String content;
 }
 
