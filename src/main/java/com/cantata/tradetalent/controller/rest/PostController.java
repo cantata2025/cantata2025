@@ -100,6 +100,19 @@ public class PostController {
     }
 
     // 게시글 삭제
+    @PutMapping("/delete")
+    public ResponseEntity<Map<String, Object>> deletePost (
+            @RequestParam int id
+    ) {
+        log.info("delete viewPostCount : {}", id);
+        SearchResponse deletedPost = postService.removePost(id);
 
+        Map<String, Object> response = Map.of(
+                "post", deletedPost
+                , "message", "search success"
+        );
+
+        return ResponseEntity.ok().body(response);
+    }
 
 }

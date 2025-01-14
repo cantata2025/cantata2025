@@ -87,7 +87,7 @@
     </update>
 
     <!-- 게시물 삭제 쿼리 -->
-    <update id="deletePost">
+    <update id="deletePostById">
         UPDATE posts
         SET deleted_at = CURRENT_TIMESTAMP
         WHERE id = #{id}

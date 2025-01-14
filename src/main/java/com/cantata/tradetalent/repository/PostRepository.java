@@ -31,7 +31,7 @@ public interface PostRepository {
     public void updatePost (UpdatedContentRequest updatedContentRequest);
 
     // 게시물 삭제
-    public void deletePost(int id);
+    public void deletePostById(int id);
 
     // 게시물 조회수
     public void updateViewCount(int id);

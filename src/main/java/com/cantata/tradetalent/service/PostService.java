@@ -70,4 +70,15 @@ public class PostService {
 
         return updatedPost;
     }
+
+    // 게시글 삭제
+    public SearchResponse removePost(int id){
+
+        // 게시글 정보 업데이트
+        postRepository.deletePostById(id);
+
+        SearchResponse updatedPost = findPostById(id);
+
+        return updatedPost;
+    }
 }
