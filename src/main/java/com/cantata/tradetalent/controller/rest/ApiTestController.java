@@ -1,12 +1,11 @@
 package com.cantata.tradetalent.controller.rest;
 
 
-import com.cantata.tradetalent.domain.test.entity.TestGet;
+import com.cantata.tradetalent.domain.Message.entity.TestGet;
 import com.cantata.tradetalent.service.TestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

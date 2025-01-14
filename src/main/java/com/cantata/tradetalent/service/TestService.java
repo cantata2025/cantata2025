@@ -1,6 +1,6 @@
 package com.cantata.tradetalent.service;
 
-import com.cantata.tradetalent.domain.test.entity.TestGet;
+import com.cantata.tradetalent.domain.Message.entity.TestGet;
 import com.cantata.tradetalent.repository.TestRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

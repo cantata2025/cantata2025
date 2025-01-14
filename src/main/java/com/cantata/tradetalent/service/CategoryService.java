@@ -1,6 +1,7 @@
 package com.cantata.tradetalent.service;
 
-import com.cantata.tradetalent.domain.test.entity.Category;
+
+
 import com.cantata.tradetalent.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,8 @@ import java.util.List;
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
-//    카테고리 전체 조회
-    public List<Category> getAllCategories() {
-        List<Category> categories = categoryRepository.getCategories();
-        return categories;
-    }
+
+
 
     // 메인 카테고리 조회
     public List<String> getMainCategories() {
@@ -30,6 +28,22 @@ public class CategoryService {
     public List<String> getSubCategories(String mainCategoryName) {
         List<String> categoryDtos = categoryRepository.getSubCategories(mainCategoryName);
         return categoryDtos;
+    }
+
+    //지리적 권역 조회
+    public List<String> getRegionCategories(String regionGroupName){
+        List<String> regionDto = categoryRepository.getRegionName(regionGroupName);
+        return regionDto;
+    }
+    // 시별 조회
+    public List<String> provinceName(String regionGroupName) {
+        List<String> provinceDto = categoryRepository.getProvinceName(regionGroupName);
+        return provinceDto;
+    }
+    //도별 조회
+    public List<String> districtName(String provinceName) {
+        List<String> districtDto = categoryRepository.getDistrictName(provinceName);
+        return districtDto;
     }
 
 

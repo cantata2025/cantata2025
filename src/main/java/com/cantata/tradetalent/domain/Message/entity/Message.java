@@ -1,8 +1,7 @@
-package com.cantata.tradetalent.domain.test.entity;
+package com.cantata.tradetalent.domain.Message.entity;
 
 import lombok.*;
 
-import java.security.Timestamp;
 import java.time.LocalDateTime;
 
 

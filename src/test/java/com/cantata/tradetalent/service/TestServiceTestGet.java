@@ -1,6 +1,6 @@
 package com.cantata.tradetalent.service;
 
-import com.cantata.tradetalent.domain.test.entity.TestGet;
+import com.cantata.tradetalent.domain.Message.entity.TestGet;
 import com.cantata.tradetalent.repository.TestRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class TestServiceTestGet {

@@ -1,10 +1,8 @@
 package com.cantata.tradetalent.repository;
 
-import com.cantata.tradetalent.domain.test.entity.Message;
+import com.cantata.tradetalent.domain.Message.entity.Message;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 @Mapper
 public interface MessageRepository {
