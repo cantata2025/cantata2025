@@ -33,13 +33,23 @@
     </select>
 
     <!-- 게시물 키워드 조회  -->
-    <select id="findByKeyword" resultType="Post">
-        SELECT p.*
+    <select id="findByKeyword" resultType="SearchResponse">
+        SELECT p.id,
+            region.region_group_name AS regionName,
+            region.province_name AS provinceName,
+            region.district_name AS districtName,
+            give_category.sub_category_name AS categoryNameGive,
+            take_category.sub_category_name AS categoryNameTake,
+            p.content,
+            p.writer,
+            p.view_count AS viewCount,
+            p.created_at AS createdAt
         FROM posts p
         LEFT JOIN categories give_category ON p.category_id_give = give_category.id
         LEFT JOIN categories take_category ON p.category_id_take = take_category.id
         LEFT JOIN region_categories region ON p.region = region.id
         WHERE 1=1
+        AND deleted_at IS NULL
 
         <choose>
             <when test="option == 'content'">

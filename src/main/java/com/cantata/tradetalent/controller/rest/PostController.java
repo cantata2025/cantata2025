@@ -2,7 +2,10 @@ package com.cantata.tradetalent.controller.rest;
 
 import com.cantata.tradetalent.domain.Post.dto.request.OptionalSearchPostRequest;
 import com.cantata.tradetalent.domain.Post.dto.request.UploadPostRequest;
+import com.cantata.tradetalent.domain.Post.dto.response.SearchResponse;
 import com.cantata.tradetalent.domain.Post.entity.Post;
+import com.cantata.tradetalent.exception.ErrorCode;
+import com.cantata.tradetalent.exception.UserException;
 import com.cantata.tradetalent.repository.PostRepository;
 import com.cantata.tradetalent.service.PostService;
 import lombok.RequiredArgsConstructor;
@@ -54,7 +57,7 @@ public class PostController {
             @RequestBody OptionalSearchPostRequest optionalSearchPostRequest
             ){
         log.info("option : {}",optionalSearchPostRequest);
-        List<Post> postByKeywordList = postService.findPostByKeyword(optionalSearchPostRequest);
+        List<SearchResponse> postByKeywordList = postService.findPostByKeyword(optionalSearchPostRequest);
 
         Map<String, Object> response = Map.of(
                 "postList", postByKeywordList

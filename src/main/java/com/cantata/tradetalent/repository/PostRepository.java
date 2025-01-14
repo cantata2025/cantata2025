@@ -2,6 +2,7 @@ package com.cantata.tradetalent.repository;
 
 import com.cantata.tradetalent.domain.Post.dto.request.OptionalSearchPostRequest;
 import com.cantata.tradetalent.domain.Post.dto.request.UploadPostRequest;
+import com.cantata.tradetalent.domain.Post.dto.response.SearchResponse;
 import com.cantata.tradetalent.domain.Post.entity.Post;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -21,7 +22,7 @@ public interface PostRepository {
 
     // 게시물 키워드 조회
 
-    public List<Post> findByKeyword(OptionalSearchPostRequest optionalSearchPostRequest);
+    public List<SearchResponse> findByKeyword(OptionalSearchPostRequest optionalSearchPostRequest);
 
     // 게시물 삭제
     public void deletePost(int id);
