@@ -1,6 +1,7 @@
 package com.cantata.tradetalent.controller.rest;
 
 import com.cantata.tradetalent.domain.Post.dto.request.OptionalSearchPostRequest;
+import com.cantata.tradetalent.domain.Post.dto.request.UpdatedContentRequest;
 import com.cantata.tradetalent.domain.Post.dto.request.UploadPostRequest;
 import com.cantata.tradetalent.domain.Post.dto.response.SearchResponse;
 import com.cantata.tradetalent.domain.Post.entity.Post;
@@ -30,11 +31,11 @@ public class PostController {
     public ResponseEntity<Map<String, Object>> uploadPost(
             @RequestBody UploadPostRequest uploadPostRequest
             // username => email
-            ,@AuthenticationPrincipal String username
-            ){
+            , @AuthenticationPrincipal String username
+    ) {
 
-        log.info("upload post : {}",uploadPostRequest);
-        log.info("token username : {}",username);
+        log.info("upload post : {}", uploadPostRequest);
+        log.info("token username : {}", username);
 
         uploadPostRequest.setEmail(username);
 
@@ -50,13 +51,12 @@ public class PostController {
     }
 
     // 게시물 조회 (All)
-
     // 게시물 조회 (keyword)
     @GetMapping("/optional")
     public ResponseEntity<Map<String, Object>> searchByKeyword(
             @RequestBody OptionalSearchPostRequest optionalSearchPostRequest
-            ){
-        log.info("option : {}",optionalSearchPostRequest);
+    ) {
+        log.info("option : {}", optionalSearchPostRequest);
         List<SearchResponse> postByKeywordList = postService.findPostByKeyword(optionalSearchPostRequest);
 
         Map<String, Object> response = Map.of(
@@ -66,4 +66,24 @@ public class PostController {
 
         return ResponseEntity.ok().body(response);
     }
+
+    // 게시글 수정
+    @PutMapping("/update")
+    public ResponseEntity<Map<String, Object>> updatePost(
+            @RequestBody UpdatedContentRequest updatedContentRequest
+    ) {
+        log.info("updated content : {}", updatedContentRequest);
+        SearchResponse updatedPost = postService.updatePostContent(updatedContentRequest);
+
+        Map<String, Object> response = Map.of(
+                "postList", updatedPost
+                , "message", "search success"
+        );
+
+        return ResponseEntity.ok().body(response);
+    }
+
+    // 게시글 삭제
+
+
 }

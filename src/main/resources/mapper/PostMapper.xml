@@ -16,13 +16,6 @@
         )
     </insert>
 
-    <!-- 게시물 수정 쿼리 -->
-    <update id="updatePost">
-        UPDATE posts
-        SET content = #{content}, updated_at = CURRENT_TIMESTAMP
-        WHERE id = #{id}
-    </update>
-
     <!-- 게시물 모두 조회 쿼리 -->
     <select id="findAllPost" resultType="Post">
         SELECT *
@@ -35,15 +28,15 @@
     <!-- 게시물 키워드 조회  -->
     <select id="findByKeyword" resultType="SearchResponse">
         SELECT p.id,
-            region.region_group_name AS regionName,
-            region.province_name AS provinceName,
-            region.district_name AS districtName,
-            give_category.sub_category_name AS categoryNameGive,
-            take_category.sub_category_name AS categoryNameTake,
-            p.content,
-            p.writer,
-            p.view_count AS viewCount,
-            p.created_at AS createdAt
+        region.region_group_name AS regionName,
+        region.province_name AS provinceName,
+        region.district_name AS districtName,
+        give_category.sub_category_name AS categoryNameGive,
+        take_category.sub_category_name AS categoryNameTake,
+        p.content,
+        p.writer,
+        p.view_count AS viewCount,
+        p.created_at AS createdAt
         FROM posts p
         LEFT JOIN categories give_category ON p.category_id_give = give_category.id
         LEFT JOIN categories take_category ON p.category_id_take = take_category.id
@@ -71,7 +64,27 @@
         </choose>
     </select>
 
+    <!-- 게시글 단일조회 (by ID) -->
+    <select id="findPostById" resultType="SearchResponse">
+        SELECT p.*,
+        give_category.sub_category_name AS categoryNameGive,
+        take_category.sub_category_name AS categoryNameTake,
+        region.region_group_name AS regionName,
+        region.province_name AS provinceName,
+        region.district_name AS districtName
+        FROM posts p
+        LEFT JOIN categories give_category ON p.category_id_give = give_category.id
+        LEFT JOIN categories take_category ON p.category_id_take = take_category.id
+        LEFT JOIN region_categories region ON p.region = region.id
+        WHERE p.id = #{id}
+    </select>
 
+    <!-- 게시글 수정 쿼리 -->
+    <update id="updatePost">
+        UPDATE posts
+        SET content = #{newContent}, updated_at = CURRENT_TIMESTAMP
+        WHERE id = #{id}
+    </update>
 
     <!-- 게시물 삭제 쿼리 -->
     <update id="deletePost">
