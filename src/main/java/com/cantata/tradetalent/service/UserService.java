@@ -60,10 +60,6 @@ public class UserService {
         log.info("------------------" + type + "--------" + value);
         switch (type) {
             case "email":
-                // 중복된 경우를 클라이언트에게 알려야함
-                User user1 = userRepository.findByEmail(value)
-                        .get();
-                log.info("uuuuuuuu : {}", user1);
                 return userRepository.findByEmail(value)
                         .map(user -> DuplicateCheckResponse.unavailable("이미 사용중인 이메일입니다.")) // null이 아닌 경우
                         .orElse(DuplicateCheckResponse.available());// null인 경우

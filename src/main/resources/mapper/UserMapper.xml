@@ -10,11 +10,13 @@
         SELECT *
         FROM users
         WHERE email = #{email}
+        AND deactivation_date IS NULL
     </select>
 
     <select id="findByName" resultType="User">
         SELECT *
         FROM users
         WHERE name = #{username}
+        AND deactivation_date IS NULL
     </select>
 </mapper>
