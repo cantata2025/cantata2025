@@ -94,7 +94,7 @@
     </update>
 
     <!-- 게시물 조회수 증가 쿼리 -->
-    <update id="increaseViewCount">
+    <update id="updateViewCount">
         UPDATE posts
         SET view_count = view_count + 1
         WHERE id = #{id};

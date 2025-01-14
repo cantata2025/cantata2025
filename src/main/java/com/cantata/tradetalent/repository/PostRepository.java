@@ -34,5 +34,5 @@ public interface PostRepository {
     public void deletePost(int id);
 
     // 게시물 조회수
-    public void increaseViewCount(int id);
+    public void updateViewCount(int id);
 }

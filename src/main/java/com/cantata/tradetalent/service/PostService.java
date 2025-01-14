@@ -59,4 +59,15 @@ public class PostService {
 
         return updatedPost;
     }
+
+    // 게시글 조회수 증가
+    public SearchResponse increaseViewCount(int id){
+
+        // 게시글 정보 업데이트
+        postRepository.updateViewCount(id);
+
+        SearchResponse updatedPost = findPostById(id);
+
+        return updatedPost;
+    }
 }

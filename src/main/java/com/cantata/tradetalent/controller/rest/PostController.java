@@ -76,7 +76,23 @@ public class PostController {
         SearchResponse updatedPost = postService.updatePostContent(updatedContentRequest);
 
         Map<String, Object> response = Map.of(
-                "postList", updatedPost
+                "post", updatedPost
+                , "message", "search success"
+        );
+
+        return ResponseEntity.ok().body(response);
+    }
+
+    // 게시글 조회수 증가
+    @PutMapping("/view-count")
+    public ResponseEntity<Map<String, Object>> increasePostViewCount (
+            @RequestParam int id
+    ) {
+        log.info("increase viewPostCount : {}", id);
+        SearchResponse updatedPost = postService.increaseViewCount(id);
+
+        Map<String, Object> response = Map.of(
+                "post", updatedPost
                 , "message", "search success"
         );
 
