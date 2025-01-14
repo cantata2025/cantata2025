@@ -77,7 +77,7 @@ public class PostController {
 
         Map<String, Object> response = Map.of(
                 "post", updatedPost
-                , "message", "search success"
+                , "message", "update success"
         );
 
         return ResponseEntity.ok().body(response);
@@ -93,7 +93,7 @@ public class PostController {
 
         Map<String, Object> response = Map.of(
                 "post", updatedPost
-                , "message", "search success"
+                , "message", "increaseViewCount success"
         );
 
         return ResponseEntity.ok().body(response);
@@ -108,8 +108,7 @@ public class PostController {
         SearchResponse deletedPost = postService.removePost(id);
 
         Map<String, Object> response = Map.of(
-                "post", deletedPost
-                , "message", "search success"
+                "message", "delete success"
         );
 
         return ResponseEntity.ok().body(response);
