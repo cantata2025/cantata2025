@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>로그인</title>
   <link rel="stylesheet" href="../../../../resources/static/css/auth/login.css">
- 
+  <script src="../../../../resources/static/js/auth/login.js" defer></script>
 </head>
 <body>
   <div>
     <div class="login-container">
+      <p id="logo">TradeTalent</p>
       <h1>로그인</h1>
-      <form>
-        <input type="text" placeholder=" 사용자 이름 또는 이메일">
-        <input type="password" placeholder="비밀번호">
+      <form class="auth-form">
+        <input type="text" name="username" placeholder=" 사용자 이름 또는 이메일">
+        <input type="password" name="password" placeholder="비밀번호">
         <button type="submit">로그인</button>
       </form>
       <p style="margin-top: 15px;">비밀번호를 잊으셨나요?</p>

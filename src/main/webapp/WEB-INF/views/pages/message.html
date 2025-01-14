@@ -104,7 +104,20 @@
     <!-- 배경 레이어 -->
     <div class="modal-content">
       <i class="fas fa-times"></i>
-      <p id="message-content"></p>
+      <div><span>보낸사람 : </span><span id="modal-sender"></span></span>
+      <p>내용</p>
+      <div class="content-box">
+        <p id="message-content"></p>
+      </div>
+      <button id="reply">답장하기</button>
+    </div>
+    <div class="modal-content modal-right">
+      <i class="fas fa-times"></i>
+      <div><p>보낸사람 : </p></div>
+      <p>내용</p>
+      <div class="content-box">
+        <p id="message-content"></p>
+      </div>
       <button>답장하기</button>
     </div>
   </body>

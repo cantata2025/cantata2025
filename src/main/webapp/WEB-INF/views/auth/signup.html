@@ -17,8 +17,46 @@
       <input type="password" placeholder="비밀번호">
       <button type="button" id="next-button">다음</button>
     </form>
-    <p>계정이 있으신가요? <a href="./login.html">로그인</a></p>
+    <p>계정이 있으신가요? <a href="./로그인.html">로그인</a></p>
   </div>
 
+  <!-- 모달 및 추가 폼 -->
+  <template id="additional-info-template">
+    <h1>추가 정보 입력</h1>
+    <p>잘하는 분야와 배우고 싶은 분야를 입력해주세요.</p>
+    <form id="additional-info-form">
+      <input id="skill-input" type="text" placeholder="잘하는 분야" readonly>
+      <button type="button" id="skill-modal-btn">잘하는 분야 선택</button>
+
+      <input id="want-input" type="text" placeholder="배우고 싶은 분야" readonly>
+      <button type="button" id="want-modal-btn">배우고 싶은 분야 선택</button>
+
+      <button type="button" id="complete-button">완료</button>
+    </form>
+    <p>이전 단계로 돌아가고 싶으신가요? <a href="./가입.html">이전 단계</a></p>
+  </template>
+
+  <template id="modal-template">
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>분야 선택</h2>
+        <ul id="category-list">
+          <li data-category="외국어">외국어</li>
+          <li data-category="음악">음악</li>
+          <li data-category="라이프">라이프</li>
+          <li data-category="IT">IT</li>
+          <li data-category="전문지식">전문지식</li>
+          <li data-category="스포츠">스포츠</li>
+          <li data-category="교육">교육</li>
+          <li data-category="공연">공연</li>
+        </ul>
+        <ul id="subcategory-list" class="hidden"></ul>
+        <button id="modal-back-btn" class="hidden">뒤로가기</button>
+        <button id="modal-close-btn">닫기</button>
+      </div>
+    </div>
+  </template>
+
+  <script src="./가입.js"></script>
 </body>
 </html>

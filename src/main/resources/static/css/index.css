@@ -67,10 +67,12 @@ main{
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   position: relative;
   background: rgba(255,253,208,0.3);
+  cursor: pointer;
 }
 .lesson .skills{
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
 }
 .lesson>.skills>div{
   display: inline-block;
@@ -116,4 +118,11 @@ main{
   display: none;
   line-height: 2;
   z-index: 4;
+}
+.modal-wrap{
+  border: 1px solid #000;
+}
+.modal-head{
+  display: flex;
+  justify-content: space-between;
 }

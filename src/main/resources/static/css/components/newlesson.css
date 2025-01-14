@@ -63,8 +63,9 @@ main{
   resize: none;
   padding: 20px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   border: 1px solid rgba(219,219,219);
+  line-height: 1.5;
 }
 .category-container {
   display: flex;

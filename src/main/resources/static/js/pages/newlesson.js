@@ -190,11 +190,11 @@ document.getElementById('submit').addEventListener('click', e=>{
     const receiveCategory = $selectedReceive.textContent;
     const contentText = document.getElementById('content').value;
     const newLessonData = {
-        area1: area1,//광역
-        area2: area2,//시도
-        area3: area3,//시구군
-        giveCategory: giveCategory,
-        receiveCategory: receiveCategory,
+        region_group: area1,//광역
+        region_group_name: area2,//시도
+        province: area3,//시구군
+        categoryGive: giveCategory,
+        categoryTake: receiveCategory,
         contentText: contentText,
     }
     fetchToNewLesson(newLessonData);
