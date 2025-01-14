@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Builder
 public class UploadPostRequest {
 
-    private Long id;  // 자동 생성된 id를 저장할 필드
+    private int id;  // 자동 생성된 id를 저장할 필드
 
     @JsonProperty("email")
     String email;
