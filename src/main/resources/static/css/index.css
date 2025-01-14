@@ -22,7 +22,7 @@ main{
   height: 500px;
 }
 #main-image{
-  background: rgba(173,255,47,0.5) url('../../static/images/main1.png')no-repeat right center/contain;
+  background: #E8F9FF url('../../static/images/main1.png')no-repeat right center/contain;
   width: 100%;
   height: 100%;
   position: relative;
@@ -31,7 +31,7 @@ main{
   position: absolute;
   top: 100px;
   left: 60px;
-  color: #00008b;
+  color: #2A004E;
   font-size: 30px;
   font-weight: 500;
 }
