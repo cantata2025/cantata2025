@@ -2,12 +2,15 @@ package com.cantata.tradetalent.service;
 
 
 
+import com.cantata.tradetalent.domain.Category.dto.RegionCategoryDto;
 import com.cantata.tradetalent.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Service
@@ -35,16 +38,36 @@ public class CategoryService {
         List<String> regionDto = categoryRepository.getRegionName(regionGroupName);
         return regionDto;
     }
-    // 시별 조회
-    public List<String> provinceName(String regionGroupName) {
-        List<String> provinceDto = categoryRepository.getProvinceName(regionGroupName);
-        return provinceDto;
+    // 시별 도별 조회처리
+
+
+    public Map<String , Object> findRegionOrProvince(RegionCategoryDto regionCategoryDto) {
+        Map<String, Object> response = new HashMap<>();
+
+        if ("region".equals(regionCategoryDto.getOption())) {
+            // regionCategory 처리
+            List<String> provinceNames = categoryRepository.getProvinceName(regionCategoryDto.getRegionCategory());
+            response.put("option", "region");
+            response.put("regionCategory", regionCategoryDto.getRegionCategory());
+            response.put("provinces", provinceNames);
+
+        } else if ("province".equals(regionCategoryDto.getOption())) {
+            // provinceName 처리
+            List<String> districtNames = categoryRepository.getDistrictName(regionCategoryDto.getProvinceName());
+            response.put("option", "province");
+            response.put("provinceName", regionCategoryDto.getProvinceName());
+            response.put("districts", districtNames);
+
+        } else {
+            throw new IllegalArgumentException("Invalid option provided");
+        }
+
+        return response;
+
     }
-    //도별 조회
-    public List<String> districtName(String provinceName) {
-        List<String> districtDto = categoryRepository.getDistrictName(provinceName);
-        return districtDto;
-    }
+
+
+
 
 
 }
