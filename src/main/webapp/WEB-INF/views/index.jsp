@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/index.css">
   <script
       src="js/index.js"
+      type="module"
       defer
     ></script>
 </head>
