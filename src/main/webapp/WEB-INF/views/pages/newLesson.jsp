@@ -21,12 +21,12 @@
       <div class="head-container">
         <div class="head-wrap">
           <div class="logo">
-            <span>TradeTalent</span>
+            <span><a href="/">TradeTalent</a></span>
           </div>
           <ul class="nav">
             <li><a href="#">프로필</a></li>
-            <li><a href="#">메세지</a></li>
-            <li><a href="#">레슨등록</a></li>
+            <li><a href="/message">메세지</a></li>
+            <li><a href="/newlesson">레슨등록</a></li>
             <li><a href="#">알아보기</a></li>
           </ul>
           <div class="search-wrap">

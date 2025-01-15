@@ -124,3 +124,18 @@ body {
 .hidden {
   display: none;
 }
+
+ #email-error {
+  font-size: 14px;
+}
+
+#nickname-error {
+  font-size: 14px;
+}
+
+#password-error {
+  font-size: 14px;
+}
+.error-message{
+  color: red;
+}

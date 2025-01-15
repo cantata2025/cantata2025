@@ -22,7 +22,7 @@ main{
   height: 500px;
 }
 #main-image{
-  background: #E8F9FF url('../../static/images/main1.png')no-repeat right center/contain;
+  background: #E8F9FF url('../images/main1.png')no-repeat right center/contain;
   width: 100%;
   height: 100%;
   position: relative;
@@ -50,6 +50,13 @@ main{
 }
 /* 렌더링되는 레슨 카드들 */
 .lessons{
+  width: 100%;
+  padding: 10px 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;  
+}
+#lessons{
   width: 100%;
   padding: 10px 10px;
   display: flex;
