@@ -1,7 +1,6 @@
-package com.cantata.tradetalent.domain.test.dto.request;
+package com.cantata.tradetalent.domain.Message.dto.request;
 
-import com.cantata.tradetalent.domain.test.entity.Message;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.cantata.tradetalent.domain.Message.entity.Message;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 

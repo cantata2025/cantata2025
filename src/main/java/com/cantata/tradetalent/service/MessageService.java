@@ -1,7 +1,7 @@
 package com.cantata.tradetalent.service;
 
-import com.cantata.tradetalent.domain.test.dto.request.MessageDto;
-import com.cantata.tradetalent.domain.test.entity.Message;
+import com.cantata.tradetalent.domain.Message.dto.request.MessageDto;
+import com.cantata.tradetalent.domain.Message.entity.Message;
 import com.cantata.tradetalent.repository.MessageRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

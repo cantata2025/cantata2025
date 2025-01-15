@@ -1,8 +1,8 @@
 package com.cantata.tradetalent.controller.rest;
 
 
-import com.cantata.tradetalent.domain.test.dto.request.MessageDto;
-import com.cantata.tradetalent.domain.test.entity.Message;
+import com.cantata.tradetalent.domain.Message.dto.request.MessageDto;
+import com.cantata.tradetalent.domain.Message.entity.Message;
 import com.cantata.tradetalent.service.MessageService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/cantata/user")
+@RequestMapping("/api/cantata/message")
 @Slf4j
 @RequiredArgsConstructor
 
@@ -46,7 +46,7 @@ public class MessageApiContoller {
         return ResponseEntity.ok("메시지가 수신 처리되었습니다.");
     }
 
-    //메시지 삭제
+    //메시지 삭제(삭제시 isDeleted = 1)
     @PutMapping("/remove/{id}")
     public ResponseEntity<?> removeMessage(
             @PathVariable Long id,

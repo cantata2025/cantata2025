@@ -1,4 +1,4 @@
-package com.cantata.tradetalent.domain.test.entity;
+package com.cantata.tradetalent.domain.Category.dto;
 
 
 import lombok.*;
@@ -9,7 +9,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class CategoryTest {
+public class UserCategory {
     private int id;
     private int mainCategory;
     private String mainCategoryName;

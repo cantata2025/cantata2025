@@ -1,7 +1,7 @@
 package com.cantata.tradetalent.controller.rest;
 
 
-import com.cantata.tradetalent.domain.test.entity.TestGet;
+import com.cantata.tradetalent.domain.Message.entity.TestGet;
 import com.cantata.tradetalent.service.TestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -25,4 +25,6 @@ public class ApiTestController {
         return ResponseEntity.ok()
                 .body(testGetList);
     }
+
+
 }
