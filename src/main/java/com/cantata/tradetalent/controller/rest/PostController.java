@@ -65,6 +65,24 @@ public class PostController {
         return ResponseEntity.ok().body(response);
     }
 
+    // 게시물 전체 조회
+    @GetMapping
+    public ResponseEntity<Map<String, Object>> searchByKeyword(
+    ) {
+        List<SearchResponse> postByKeywordList = postService.findPostByKeyword(
+                OptionalSearchPostRequest.builder()
+                        .option("")
+                        .keyword("")
+                        .build());
+
+        Map<String, Object> response = Map.of(
+                "postList", postByKeywordList
+                , "message", "search success"
+        );
+
+        return ResponseEntity.ok().body(response);
+    }
+
     // 게시물 조회 (keyword)
     @GetMapping("/optional")
     public ResponseEntity<Map<String, Object>> searchByKeyword(
