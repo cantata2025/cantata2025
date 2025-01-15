@@ -59,32 +59,29 @@ public class PostService {
     public SearchResponse updatePostContent(UpdatedContentRequest updatedContentRequest){
 
         // 게시글 정보 업데이트
+        SearchResponse foundPost = findPostById(updatedContentRequest.getId());
         postRepository.updatePost(updatedContentRequest);
 
-        SearchResponse updatedPost = findPostById(updatedContentRequest.getId());
-
-        return updatedPost;
+        return findPostById(updatedContentRequest.getId());
     }
 
     // 게시글 조회수 증가
     public SearchResponse increaseViewCount(int id){
 
-        // 게시글 정보 업데이트
+        // 게시물 조회수 +1 업데이트
+        SearchResponse foundPost = findPostById(id);
         postRepository.updateViewCount(id);
 
-        SearchResponse updatedPost = findPostById(id);
-
-        return updatedPost;
+        return findPostById(id);
     }
 
     // 게시글 삭제
     public SearchResponse removePost(int id){
 
-        // 게시글 정보 업데이트
+        // 게시글 여부 검사
+        SearchResponse deletedPost = findPostById(id);
         postRepository.deletePostById(id);
 
-        SearchResponse updatedPost = findPostById(id);
-
-        return updatedPost;
+        return deletedPost;
     }
 }
