@@ -1,0 +1,91 @@
+@import url(../common.css);
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #fafafa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.login-container {
+  width: 350px;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.login-container #logo{
+  font-family: 'Pacifico';
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+.login-container h1 {
+  font-weight: bold; /* 굵게 */
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
+  background: #fafafa;
+}
+.login-container button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background: #3897f0;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.login-container .divider {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  color: #8e8e8e;
+}
+.login-container .divider::before,
+.login-container .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #dbdbdb;
+}
+.login-container .divider::before {
+  margin-right: 10px;
+}
+.login-container .divider::after {
+  margin-left: 10px;
+}
+.login-container a {
+  color: #3897f0;
+  text-decoration: none;
+  font-size: 14px;
+}
+.signup-container {
+  margin-top: 20px;
+  padding: 20px 0;
+  background: #fff;
+  border: 1px solid #dbdbdb;
+  text-align: center;
+}
+.signup-container p {
+  margin: 0;
+  font-size: 14px;
+  color: #8e8e8e;
+}
+.signup-container a {
+  font-weight: bold;
+  color: #3897f0;
+  text-decoration: none;
+}
+
+

@@ -1,0 +1,153 @@
+@import url(./header.css);
+@import url(./footer.css);
+@import url(../common.css);
+body{
+  font-family: "Noto Sans KR", serif;
+}
+footer{
+  display: flex;
+  justify-content: center;
+  color: #868b94;
+}
+main{
+  display: flex;
+  justify-content: center;
+}
+#main-wrap{
+  width: 65%;
+  display: flex;
+  justify-content: center;  
+  flex-direction: column;
+  margin-top: 160px;
+  padding: 40px;
+}
+#message-board{
+  width: 100%;
+  height: 500px;
+}
+#message-board>p{
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+#delete{
+  font-size: 15px;
+  margin: 10px;
+  border-radius: 4px;
+  display: inline;
+  padding: 2px 5px;
+  box-shadow: 0 0 1px 1px #bbb;
+  cursor: pointer;
+}
+#delete>.fa-times{
+  color: #FF4500;
+}
+.board {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+.board-header, .board-item {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+}
+.board-header {
+  background-color: #f7f7f7;
+  font-weight: bold;
+}
+.board-header div, .board-item div {
+  text-align: center;
+}
+.check{
+  flex: 0.5; /* 체크박스는 좁게 설정 */
+}
+.sender{
+  flex: 1;
+}
+.content{
+  flex: 3;
+  cursor: pointer;
+}
+.date{
+  flex: 1;
+}
+.board-item:hover {
+  background-color: #f9f9f9;
+}
+.board-item div:first-child {
+  display: flex;
+  justify-content: center;
+}
+.board-item input[type="checkbox"] {
+  margin: 0;
+  transform: scale(1.2);
+}
+.board-empty {
+  text-align: center;
+  padding: 20px;
+  color: #888;
+}
+/* 모달 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  display:  none;
+  z-index: 100;
+}
+.modal-content {
+  font-size: 18px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: none;
+  line-height: 2;
+  z-index: 110;
+}
+body .modal-right{
+  top: 50%;
+  right: 30%;
+  /* transform: translate(-50%, -50%); */
+}
+#modal-sender{
+  margin-left: 10px;
+  font-weight: 500;
+}
+.content-box{
+  width: 500px;
+  min-height: 200px;
+  padding: 10px;
+  border: 1px solid rgb(219,219,219);
+  margin-bottom: 30px;
+}
+.modal-content>.fa-times{
+  font-size: 25px;
+  cursor: pointer;
+  position: absolute;
+  color: #888;
+  top: 10px;
+  right: 10px;
+}
+#reply{
+  color: #fff;
+  border-radius: 3px;
+  border: none;
+  background: #3897f0;
+  position: absolute;
+  right: 30px;
+  bottom: 20px;
+  font-size: 15px;
+  padding: 5px 10px;
+}

@@ -1,0 +1,54 @@
+.head-container{
+  display: flex;
+  justify-content: center;
+}
+.head-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 65%;
+  height: 100px;
+  position: fixed;
+  background: #fff;
+  z-index: 2;
+  border-bottom: 1px solid rgb(219,219,219);
+
+}
+.head-wrap .logo{
+  flex: 1;
+  font-size: 20px;
+  font-family: 'Pacifico';
+}
+.head-wrap .nav{
+  display: flex;
+  flex: 3;
+}
+.head-wrap .nav li{
+  font-size: 20px;
+  font-weight: 500;
+  padding: 10px;
+}
+
+.head-wrap .search-wrap{
+  flex: 4;
+}
+.search-wrap #search-btn{
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  color: rgb(148,148,148);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+button>.fa-search{
+  font-size: 20px;
+  color: #6f6f6f;
+}
+.logout{
+  flex: 1;
+  font-size: 20px;
+  font-weight: 500;
+}
