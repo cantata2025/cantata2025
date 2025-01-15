@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cantata.tradetalent.repository.MessageRepository">
+<!--    메시지 전송 query -->
+    <insert id="sendMessage">
+        INSERT INTO messages
+            (sender_id, receiver_id, content)
+        VALUES (#{senderId}, #{receiverId}, #{content})
+    </insert>
+
+<!--메시지 수신 확인 query-->
+    <update id="updateMessageReceive">
+        UPDATE messages
+        SET is_read = TRUE, received_at = CURRENT_TIMESTAMP
+        WHERE pk = #{id} AND receiver_id = #{receiverId};
+    </update>
+<!--메시지 삭제 query-->
+    <update id="deleteMessage">
+        UPDATE messages
+        SET is_deleted = TRUE
+        WHERE pk = #{id}
+    </update>
+
+
+</mapper>

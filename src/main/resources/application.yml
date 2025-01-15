@@ -4,7 +4,7 @@ server:
 spring:
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/instagram_clone
+    url: jdbc:mariadb://localhost:3306/cantata
     username: root
     password: mariadb
   mvc:
@@ -30,9 +30,9 @@ logging:
 
 file:
   upload:
-    location: ${user.home}/tradetalent/uploads/
+    location: ${user.home}/trade-talent/uploads/
 
 jwt:
-  secret-key: L6h/xMxGO53HQmR/OB99qR/y0kTr2CAyaI5RqBIX184=  # 토큰발급시와 토큰위조검사시 사용할 서명
+  secret-key: hpiQfYdtu+34loYL7+DBJNJ0mpPGOAl5HQqCjmbLLaQ= # 토큰 발급시와 토큰 위조 검사시 사용할 서명
   access-token-validity-time: 3600000  # 1시간
   refresh-token-validity-time: 604800000 # 7일

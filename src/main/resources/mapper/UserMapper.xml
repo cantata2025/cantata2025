@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cantata.tradetalent.repository.UserRepository">
+    <insert id="saveUser" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO users (password, name, email)
+        VALUES (#{password}, #{name}, #{email});
+    </insert>
+
+    <select id="findByEmail" resultType="User">
+        SELECT *
+        FROM users
+        WHERE email = #{email}
+    </select>
+
+    <select id="findByName" resultType="User">
+        SELECT *
+        FROM users
+        WHERE name = #{username}
+    </select>
+</mapper>
