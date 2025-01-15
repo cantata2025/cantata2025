@@ -1,5 +1,6 @@
 package com.cantata.tradetalent.config;
 
+import com.cantata.tradetalent.jwt.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,11 +10,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity   // 커스텀 시큐리티 설정파일
 @RequiredArgsConstructor
 public class SecurityConfig {
+
+
+    // 커스텀 필터 의존
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     //시큐리티 필터체인 빈을 등록
     @Bean
@@ -35,6 +41,8 @@ public class SecurityConfig {
                                 // 기타 (jsp,js, css, image....) 는 모두 허용
                                 .anyRequest().permitAll()
                 )
+                // 토큰을 검사라는 커스텀 인증필터를 시큐리티에 등록
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 // 시큐리티 기본 인증인가차단의 상태코드는 403
                 // 403은 인가차단이기에 인증차단을 401로 변경
                 .exceptionHandling(ex->
