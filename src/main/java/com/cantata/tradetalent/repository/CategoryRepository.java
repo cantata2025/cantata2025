@@ -10,7 +10,7 @@ public interface CategoryRepository {
 
 
 
-    // 메인 카테고리 조회
+    // 메인 카테고리 조회.
     List<String> getCategoriesMain();
 
 
