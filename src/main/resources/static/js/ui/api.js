@@ -25,7 +25,7 @@ export async function fetchWithAuth(url, options = {}) {
   if (response.status === 401) {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
-    window.location.href = '/';
+    window.location.href = '/login';
     return;
   }
 

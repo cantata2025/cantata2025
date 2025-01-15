@@ -34,11 +34,11 @@
     </select>
 
     <!-- 구 별 조회-->
-    <select id="getDistrictName" resultType="String">
+    <select id="getDistrictName" parameterType="String" resultType="String">
         SELECT
             district_name
         FROM region_categories
-        WHERE province_name = ${provinceName}
+        WHERE province_name = #{provinceName}
     </select>
 
 
