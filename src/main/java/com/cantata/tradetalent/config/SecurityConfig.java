@@ -37,12 +37,12 @@ public class SecurityConfig {
                                 // '/api/auth' 로 시작하는 요청은 인증을 필요로 하지 않음
                                 .requestMatchers("/api/cantata/auth/**").permitAll()
                                 // '/api' 로 시작하는 요청은 모두 인증은 필수로 처리
-                                .requestMatchers("/api/cantata/**").authenticated()
+//  1                              .requestMatchers("/api/cantata/**").authenticated()
                                 // 기타 (jsp,js, css, image....) 는 모두 허용
                                 .anyRequest().permitAll()
                 )
                 // 토큰을 검사라는 커스텀 인증필터를 시큐리티에 등록
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+//   2             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 // 시큐리티 기본 인증인가차단의 상태코드는 403
                 // 403은 인가차단이기에 인증차단을 401로 변경
                 .exceptionHandling(ex->
