@@ -27,6 +27,9 @@ logging:
     com:
       cantata:
         tradetalent: debug
+    org:
+      apache:
+        ibatis: DEBUG
 
 file:
   upload:

@@ -92,7 +92,10 @@ function renderModal(e){
 // 서버에서 포스트 불러오기
 async function fetchLessons() {
   const response = await fetch('/api/cantata/post');
-  if (!response.ok) alert('목록을 불러오는데 실패했습니다!');
+  if (!response.ok) {
+    alert('목록을 불러오는데 실패했습니다!');
+    return sampleJson;
+  }
   return await response.json();
 }
 //받은 데이터로 카드 태그 그리기
@@ -107,10 +110,10 @@ function createLessons(id,provinceName,categoryNameGive,categoryNameTake,content
         </li>
   `
 };
-function renderLessons(){
+async function renderLessons(){
   // post 데이터를 서버로부터 불러오기
-  // const lessonList = await fetchLessons();
-  $renderArea.innerHTML = sampleJson.postList.map(post => 
+  const lessonList = await fetchLessons();
+  $renderArea.innerHTML = lessonList.postList.map(post => 
     createLessons(
       post.id, 
       post.provinceName, 
