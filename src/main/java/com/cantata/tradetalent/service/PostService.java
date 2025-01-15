@@ -6,6 +6,9 @@ import com.cantata.tradetalent.domain.Post.dto.request.UpdatedContentRequest;
 import com.cantata.tradetalent.domain.Post.dto.request.UploadPostRequest;
 import com.cantata.tradetalent.domain.Post.dto.response.SearchResponse;
 import com.cantata.tradetalent.domain.Post.entity.Post;
+import com.cantata.tradetalent.exception.ErrorCode;
+import com.cantata.tradetalent.exception.PostException;
+import com.cantata.tradetalent.exception.UserException;
 import com.cantata.tradetalent.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +49,10 @@ public class PostService {
 
         log.info("post service findPostById : {}",id);
 
-        return postRepository.findPostById(id);
+        return postRepository.findPostById(id)
+                .orElseThrow(
+                        () -> new PostException(ErrorCode.POST_NOT_FOUND)
+                );
     }
 
     // 게시글 내용 수정

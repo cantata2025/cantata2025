@@ -36,6 +36,20 @@ public class GlobalExceptionHandler {
     }
 
     //커스텀 에러 처리
+//    throw new MemberException(ErrorCode.TEST_ERROR,"10자 이하"); 로 던짐
+    @ExceptionHandler(PostException.class)
+    public ResponseEntity<?> handlePostNotFound(PostException e, HttpServletRequest request) {
+        log.error("Customer error occurred: {}", e.getMessage(), e);
+
+        ErrorResponse response = createErrorResponse
+                (e, request, e.getErrorCode().getStatus(), e.getMessage());
+
+        return ResponseEntity
+                .status(e.getErrorCode().getStatus())
+                .body(response);
+    }
+
+    //커스텀 에러 처리
     //throw new MemberException(ErrorCode.TEST_ERROR,"10자 이하"); 로 던짐
 //    @ExceptionHandler(MemberException.class)
 //    public ResponseEntity<?> handleCustomException(MemberException e, HttpServletRequest request) {

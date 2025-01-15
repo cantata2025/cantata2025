@@ -8,6 +8,7 @@ import com.cantata.tradetalent.domain.Post.entity.Post;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper
 public interface PostRepository {
@@ -25,7 +26,7 @@ public interface PostRepository {
     public List<SearchResponse> findByKeyword(OptionalSearchPostRequest optionalSearchPostRequest);
 
     // 게시글 단일 조회 (id)
-    public SearchResponse findPostById(int id);
+    public Optional<SearchResponse> findPostById(int id);
 
     // 게시글 수정
     public void updatePost (UpdatedContentRequest updatedContentRequest);

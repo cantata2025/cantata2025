@@ -11,6 +11,7 @@ import com.cantata.tradetalent.repository.PostRepository;
 import com.cantata.tradetalent.service.PostService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
@@ -50,7 +51,20 @@ public class PostController {
         return ResponseEntity.ok().body(response);
     }
 
-    // 게시물 조회 (All)
+    @GetMapping("/{postId}")
+    public ResponseEntity<Map<String, Object>> getPostById(
+            @PathVariable(value = "postId") int id
+    ) {
+        log.info("getPostById : {}", id);
+        SearchResponse foundPost = postService.findPostById(id);
+
+        Map<String, Object> response = Map.of(
+                "post", foundPost
+                , "message", "search success"
+        );
+        return ResponseEntity.ok().body(response);
+    }
+
     // 게시물 조회 (keyword)
     @GetMapping("/optional")
     public ResponseEntity<Map<String, Object>> searchByKeyword(
