@@ -15,8 +15,8 @@
       <p id="logo">TradeTalent</p>
       <h1>로그인</h1>
       <form class="auth-form">
-        <input type="text" name="username" placeholder=" 사용자 이름 또는 이메일">
-        <input type="password" name="password" placeholder="비밀번호">
+        <input type="text" name="username" placeholder=" 사용자 이름 또는 이메일" value="공룡">
+        <input type="password" name="password" placeholder="비밀번호" value="dnwnrhdfyd11">
         <button type="submit">로그인</button>
       </form>
       <p style="margin-top: 15px;">비밀번호를 잊으셨나요?</p>

@@ -1,3 +1,5 @@
+import { fetchWithAuth } from "./ui/api.js";
+
 const sampleJson = {
   "postList": [
       {
@@ -91,7 +93,7 @@ function renderModal(e){
 }
 // 서버에서 포스트 불러오기
 async function fetchLessons() {
-  const response = await fetch('/api/cantata/post');
+  const response = await fetchWithAuth('/api/cantata/post');
   if (!response.ok) alert('목록을 불러오는데 실패했습니다!');
   return await response.json();
 }
@@ -107,9 +109,9 @@ function createLessons(id,provinceName,categoryNameGive,categoryNameTake,content
         </li>
   `
 };
-function renderLessons(){
+async function renderLessons(){
   // post 데이터를 서버로부터 불러오기
-  // const lessonList = await fetchLessons();
+  const lessonList = await fetchLessons();
   $renderArea.innerHTML = sampleJson.postList.map(post => 
     createLessons(
       post.id, 
