@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cantata.tradetalent.repository.TalentCategoryRepository">
+
+    <insert id="createTalent" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO categories_give (user_id, category_id, type)
+        VALUES ((SELECT id FROM users WHERE email = #{email} LIMIT 1),
+               (SELECT id FROM categories WHERE sub_category_name = #{give} LIMIT 1), 2 )
+        ON DUPLICATE KEY
+        UPDATE
+            category_id =
+        VALUES (category_id), type =
+        VALUES (type);
+    </insert>
+
+
+
+
+
+</mapper>

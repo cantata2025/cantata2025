@@ -1,6 +1,5 @@
 package com.cantata.tradetalent.repository;
 
-import com.cantata.tradetalent.domain.Category.dto.UserCategory;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -10,7 +9,7 @@ public interface CategoryRepository {
 
 
 
-    // 메인 카테고리 조회
+    // 메인 카테고리 조회.
     List<String> getCategoriesMain();
 
 
@@ -27,4 +26,6 @@ public interface CategoryRepository {
     List<String> getDistrictName(String provinceName);
 
 
+    //단일 유저 카테고리 조회
+    public String getUserCategory(int id);
 }

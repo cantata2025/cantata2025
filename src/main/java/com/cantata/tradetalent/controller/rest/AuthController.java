@@ -1,8 +1,10 @@
 package com.cantata.tradetalent.controller.rest;
 
+import com.cantata.tradetalent.domain.Talent.dto.TalentRequest;
 import com.cantata.tradetalent.domain.User.dto.request.LoginRequest;
 import com.cantata.tradetalent.domain.User.dto.request.SignUpRequest;
 import com.cantata.tradetalent.domain.User.dto.response.DuplicateCheckResponse;
+import com.cantata.tradetalent.service.TalentService;
 import com.cantata.tradetalent.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ import java.util.Map;
 public class AuthController {
 
     private final UserService userService;
+    private final TalentService talentService;
 
     @PostMapping("/signup")
     public ResponseEntity<Map<String, String>> createUser(
@@ -82,4 +85,15 @@ public class AuthController {
                 "message", "로그아웃이 처리되었습니다."
         ));
     }
+    // 회원 카테고리 생성
+    @PostMapping("/accept")
+    public ResponseEntity<?> createUserTalent(
+            @RequestBody TalentRequest talentRequest
+            ){
+        String talent = talentService.createTalent(talentRequest, true);
+        return ResponseEntity.ok().body(talent);
+
+    }
+
+
 }

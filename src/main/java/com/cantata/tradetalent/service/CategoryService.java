@@ -2,7 +2,7 @@ package com.cantata.tradetalent.service;
 
 
 
-import com.cantata.tradetalent.domain.Category.dto.RegionCategoryDto;
+import com.cantata.tradetalent.domain.Category.dto.request.RegionCategoryDto;
 import com.cantata.tradetalent.repository.CategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -67,7 +67,10 @@ public class CategoryService {
     }
 
 
+    // 유저 카테고리 단일 조회
+    public String getUserCategory(int id){
+        return categoryRepository.getUserCategory(id);
 
-
+    }
 
 }
