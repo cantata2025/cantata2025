@@ -72,6 +72,7 @@ function goToStep(step) {
   container.classList.toggle("hidden");
   container2.classList.toggle("hidden");
   if (step === 2) {
+    window.history.pushState({ step: 2 }, "", "?step=2");
     // HTML 템플릿 가져오기
     const additionalInfoTemplate = document
       .getElementById("additional-info-template")
@@ -88,14 +89,16 @@ function goToStep(step) {
       initializeAdditionalInfoModal(container2);
     }
 
-    // 플레이스 홀더 초기화
-    container2.querySelector("#skill-input").value = "";
-    container2.querySelector("#want-input").value = "";
-    container2.querySelector("#skill-input").placeholder = "잘하는 분야";
-    container2.querySelector("#want-input").placeholder = "배우고 싶은 분야";
+    // 플레이스 홀더 초기화 하려면 아래코드 추가
+    // container2.querySelector("#skill-input").value = "";
+    // container2.querySelector("#want-input").value = "";
+    // container2.querySelector("#skill-input").placeholder = "잘하는 분야";
+    // container2.querySelector("#want-input").placeholder = "배우고 싶은 분야";
   }
 
   if (step === 1) {
+    window.history.pushState({ step: 1 }, "", "?step=1");
+
     const modalBackBtn = container2.querySelector("#modal-back-btn");
     const categoryList = container2.querySelector("#category-list");
     const subcategoryList = container2.querySelector("#subcategory-list");
@@ -302,3 +305,13 @@ async function fetchToSignUp(userData) {
 
   // window.location.href = '/'; // 로그인 페이지 이동
 }
+
+//  step2에서 뒤로가기 시 step1으로 돌아가도록 popstate 이벤트 처리
+window.addEventListener("popstate", (event) => {
+  if (event.state && event.state.step === 1) {
+      goToStep(1); 
+  }
+  else if (event.state && event.state.step === 2) {
+      goToStep(2); 
+  }
+});
