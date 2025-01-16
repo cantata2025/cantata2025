@@ -1,4 +1,4 @@
-package com.cantata.tradetalent.domain.Category.dto;
+package com.cantata.tradetalent.domain.Category.entity;
 
 
 import lombok.*;

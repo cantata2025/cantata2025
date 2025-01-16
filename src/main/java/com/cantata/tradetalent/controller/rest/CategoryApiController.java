@@ -1,13 +1,11 @@
 package com.cantata.tradetalent.controller.rest;
 
-import com.cantata.tradetalent.domain.Category.dto.RegionCategoryDto;
-import com.cantata.tradetalent.domain.Category.dto.UserCategory;
+import com.cantata.tradetalent.domain.Category.dto.request.RegionCategoryDto;
 import com.cantata.tradetalent.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

@@ -1,6 +1,5 @@
 package com.cantata.tradetalent.repository;
 
-import com.cantata.tradetalent.domain.Category.dto.UserCategory;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
