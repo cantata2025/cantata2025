@@ -26,4 +26,6 @@ public interface CategoryRepository {
     List<String> getDistrictName(String provinceName);
 
 
+    //단일 유저 카테고리 조회
+    public String getUserCategory(int id);
 }

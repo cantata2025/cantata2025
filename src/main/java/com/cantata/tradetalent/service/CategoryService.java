@@ -67,7 +67,10 @@ public class CategoryService {
     }
 
 
+    // 유저 카테고리 단일 조회
+    public String getUserCategory(int id){
+        return categoryRepository.getUserCategory(id);
 
-
+    }
 
 }
