@@ -8,10 +8,11 @@
     <title>Document</title>
     <link
       rel="stylesheet"
-      href="css/components/message.css"
+      href="/css/components/message.css"
     />
     <script
-      src="js/pages/message.js"
+      src="/js/pages/message.js"
+      type="module"
       defer
     ></script>
   </head>

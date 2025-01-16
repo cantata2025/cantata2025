@@ -1,3 +1,5 @@
+import { fetchWithAuth } from "../ui/api.js";
+
 // 하위 카테고리 데이터
 const subCategories = {
   language: ["영어", "일본어", "중국어", "프랑스어", "독일어", "스페인어", "한국어", "러시아어", "이태리어", "태국어", "베트남어", "그리스어"],
@@ -49,6 +51,10 @@ const $skillReceive = document.getElementById('skill-receive');
 const $area1 = document.getElementById('area1');
 const $area2 = document.getElementById('area2');
 const $area3 = document.getElementById('area3');
+const $selectedGive = document.getElementById('selected-give');
+const $selectedReceive = document.getElementById('selected-receive');
+
+
 let giveCheck;
 let receiveCheck;
 
@@ -117,15 +123,13 @@ function addSelectEvent(){
 })
 }
 function renderSelectedBtn(checked,type){
-  $newDiv = document.createElement('div');
+  const $newDiv = document.createElement('div');
   $newDiv.textContent=checked;
   if(type==='give'){
-    $selectedGive = document.getElementById('selected-give');
     $selectedGive.innerHTML ='';
     $selectedGive.appendChild($newDiv);
   }
   if(type==='receive'){
-    $selectedReceive = document.getElementById('selected-receive');
     $selectedReceive.innerHTML ='';
     $selectedReceive.appendChild($newDiv);
   }
@@ -133,7 +137,7 @@ function renderSelectedBtn(checked,type){
 // 지역선택 버튼 만드는 함수
 function renderArea1Select(){
   Object.keys(area).forEach(area=>{
-    $newOption = document.createElement('option');
+    const $newOption = document.createElement('option');
     $newOption.textContent = area;
     $newOption.setAttribute('value',area);
     $area1.appendChild($newOption);
@@ -150,7 +154,7 @@ function renderArea2Select(){
       if(index!==0) option.remove();
     })
     Object.keys(area[e.target.value]).forEach(area=>{
-      $newOption = document.createElement('option');
+      const $newOption = document.createElement('option');
       $newOption.textContent = area;
       $newOption.setAttribute('value',area);
       $area2.appendChild($newOption);
@@ -164,7 +168,7 @@ function renderArea3Select(){
       if(index!==0) option.remove();
     })
     area[$area1.value][e.target.value].forEach(area=>{
-      $newOption = document.createElement('option');
+      const $newOption = document.createElement('option');
       $newOption.textContent = area;
       $newOption.setAttribute('value',area);
       $area3.appendChild($newOption);
@@ -190,11 +194,11 @@ document.getElementById('submit').addEventListener('click', e=>{
     const receiveCategory = $selectedReceive.textContent;
     const contentText = document.getElementById('content').value;
     const newLessonData = {
-        region_group: area1,//광역
-        region_group_name: area2,//시도
-        province: area3,//시구군
-        categoryGive: giveCategory,
-        categoryTake: receiveCategory,
+        area1: area1,//광역
+        area2: area2,//시도
+        area3: area3,//시구군
+        giveCategory: giveCategory,
+        receiveCategory: receiveCategory,
         contentText: contentText,
     }
     fetchToNewLesson(newLessonData);
@@ -203,7 +207,7 @@ document.getElementById('submit').addEventListener('click', e=>{
 })
 // 새로운 개설 정보를 서버로 전송
 async function fetchToNewLesson(newLessonData) {
-  const response = await fetch('/api/??', {
+  const response = await fetchWithAuth('/api/cantata/post', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newLessonData)
@@ -212,5 +216,5 @@ async function fetchToNewLesson(newLessonData) {
   const data = await response.json();
   
   alert('정상적으로 게시되었습니다!');
-  window.location.href = '/'; // 로그인 페이지 이동
+  window.location.href = '/'; // 인덱스로 이동
 }

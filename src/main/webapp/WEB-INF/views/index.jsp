@@ -6,9 +6,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="/css/index.css">
   <script
-      src="js/index.js"
+      src="/js/index.js"
       type="module"
       defer
     ></script>
@@ -47,47 +47,11 @@
           </div>
         </div>
       </div>
-      <div class="lessons-info">
-        <p>렌더링 샘플</p>
+      
+      <div class="lessons" id="lessons-info">
+        <p>최근 등록된 레슨</p>
       </div>
-      <ul class="lessons" id="lesson-sample">
-        <li class="lesson">
-          <div class="skills"><div class="give">#영어</div><div class="take">#프로그래밍</div></div>
-          <div class="writer">김크리스티아나</div>
-          <div class="post-content">
-            한영 책 번역 경험있는 14년차 영어강사입니다. 회화위주로 수업진행하고 있습니다. 학습자에게 맞는 학습방법를 같이 찾아내어 학습 중 자연스럽게 일어날 수 있는 영어의 벽을 넘는 방법을 알려드리겠습니다. 학습자가 관심있는 원서를 같이 읽으며 영어로 이야기하는 수업도 진행하고 있습니다.
-
-저는 프로그래밍을 배우고 직접 소프트웨어를 만들어 볼 수 있는 레슨을 찾고있습니다.
-          </div>
-          <div class="location"><i class="fas fa-map-marker-alt"></i> 부산</div>
-          <div class="view-count">35 <i class="fas fa-eye"></i></div>
-        </li>
-        <li class="lesson">
-          <div class="skills"><div class="give">#영어</div><div class="take">#프로그래밍</div></div>
-          <div class="writer">김크리스티아나</div>
-          <div class="post-content">
-            한영 책 번역 경험있는 14년차 영어강사입니다. 회화위주로 수업진행하고 있습니다. 학습자에게 맞는 학습방법를 같이 찾아내어 학습 중 자연스럽게 일어날 수 있는 영어의 벽을 넘는 방법을 알려드리겠습니다. 학습자가 관심있는 원서를 같이 읽으며 영어로 이야기하는 수업도 진행하고 있습니다.
-
-저는 프로그래밍을 배우고 직접 소프트웨어를 만들어 볼 수 있는 레슨을 찾고있습니다.
-          </div>
-          <div class="location"><i class="fas fa-map-marker-alt"></i> 부산</div>
-          <div class="view-count">35 <i class="fas fa-eye"></i></div>
-        </li>
-        <li class="lesson">
-          <div class="skills"><div class="give">#영어</div><div class="take">#프로그래밍</div></div>
-          <div class="writer">김크리스티아나</div>
-          <div class="post-content">
-            한영 책 번역 경험있는 14년차 영어강사입니다. 회화위주로 수업진행하고 있습니다. 학습자에게 맞는 학습방법를 같이 찾아내어 학습 중 자연스럽게 일어날 수 있는 영어의 벽을 넘는 방법을 알려드리겠습니다. 학습자가 관심있는 원서를 같이 읽으며 영어로 이야기하는 수업도 진행하고 있습니다.
-
-저는 프로그래밍을 배우고 직접 소프트웨어를 만들어 볼 수 있는 레슨을 찾고있습니다.
-          </div>
-          <div class="location"><i class="fas fa-map-marker-alt"></i> 부산</div>
-          <div class="view-count">35 <i class="fas fa-eye"></i></div>
-        
-      </ul>
-      <div class="lessons-info">
-        <p>렌더링 영역</p>
-      </div>
+      
       <ul id="lessons"></ul>
     </div>
   </main>
@@ -112,24 +76,7 @@
     </div>
   </footer>
   <div class="modal-overlay"></div>
-  <div class="modal-content">
-    <div class="modal-wrap">
-      <div class="modal-head">
-        <div class="modal-give">영어</div>
-        <div class="modal-take">프로그래밍</div>
-      </div>
-      <div class="modal-main">
-        <div class="modal-text">
-          한영 책 번역 경험있는 14년차 영어강사입니다. 회화위주로 수업진행하고 있습니다. 학습자에게 맞는 학습방법를 같이 찾아내어 학습 중 자연스럽게 일어날 수 있는 영어의 벽을 넘는 방법을 알려드리겠습니다. 학습자가 관심있는 원서를 같이 읽으며 영어로 이야기하는 수업도 진행하고 있습니다.
-
-저는 프로그래밍을 배우고 직접 소프트웨어를 만들어 볼 수 있는 레슨을 찾고있습니다.
-        </div>
-      </div>
-      <div class="modal-bottom">
-        <div class="modal-location">부산</div>
-        <div class="modal-viewcount">10 </div>
-      </div>
-    </div>
-  </div>
+    <!-- 배경 레이어 -->
+    <div class="modal-content"></div>
 </body>
 </html>

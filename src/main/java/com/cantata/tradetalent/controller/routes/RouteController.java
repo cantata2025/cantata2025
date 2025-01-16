@@ -1,6 +1,7 @@
 package com.cantata.tradetalent.controller.routes;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -15,12 +16,12 @@ public class RouteController {
     @GetMapping("/")
     public String index(
             // 시큐리티에 저장된 인증정보를 가져옴
-//            @AuthenticationPrincipal String username
+            @AuthenticationPrincipal String username
     ) {
-//        log.info("메인페이지에서 인증된 사용자명: {}", username);
-//        if (username.equals("anonymousUser")) {
-//            return "auth/login";
-//        }
+        log.info("메인페이지에서 인증된 사용자명: {}", username);
+        if (username.equals("anonymousUser")) {
+            return "auth/login";
+        }
         return "index";  // 나중에 로그인 후 복귀할 때 주석해제
     }
 

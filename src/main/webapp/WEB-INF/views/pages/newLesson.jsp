@@ -9,10 +9,11 @@
     <title>New Lesson</title>
     <link
       rel="stylesheet"
-      href="css/components/newlesson.css"
+      href="/css/components/newlesson.css"
     />
     <script
-      src="js/pages/newlesson.js"
+      src="/js/pages/newlesson.js"
+      type="module"
       defer
     ></script>
   </head>

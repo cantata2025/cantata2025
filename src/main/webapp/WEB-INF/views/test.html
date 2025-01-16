@@ -1,93 +1,152 @@
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talent Exchange Card</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .card {
-            width: 300px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            background-color: #007BFF;
-            color: white;
-            padding: 10px;
-            font-weight: bold;
-        }
-
-        .card-body {
-            padding: 15px;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 15px;
-            background-color: #f9f9f9;
-            border-top: 1px solid #ddd;
-            font-size: 12px;
-            color: #555;
-        }
-
-        .location {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .location-icon {
-            font-size: 14px;
-            color: #007BFF;
-        }
-
-        .view-count {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .view-icon {
-            font-size: 14px;
-            color: #007BFF;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson Modal</title>
+  <style>
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+    }
+    .modal-content {
+      font-size: 18px;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      display: none;
+    }
+    .lesson {
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+    .lesson-header {
+      display: flex;
+      justify-content: space-between;
+    }
+    .lesson-body {
+      margin-top: 10px;
+    }
+    .lesson-footer {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <div class="card-header">
-            <span>영어</span>
-            <span>수학</span>
+  <div id="renderArea"></div>
+
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+
+  <script>
+    const $renderArea = document.getElementById('renderArea');
+    const $modalOverlay = document.getElementById('modalOverlay');
+    const $modalContent = document.getElementById('modalContent');
+
+    async function fetchLessons() {
+      // Sample data to simulate fetch response
+      return {
+        postList: [
+          {
+            id: 1,
+            provinceName: "Seoul",
+            categoryNameGive: "Math",
+            categoryNameTake: "Science",
+            content: "Looking to exchange math lessons for science.",
+            writer: "John Doe",
+            viewCount: 123,
+            createdAt: "2025-01-15"
+          },
+          {
+            id: 2,
+            provinceName: "Busan",
+            categoryNameGive: "English",
+            categoryNameTake: "Korean",
+            content: "Can teach English in exchange for Korean.",
+            writer: "Jane Smith",
+            viewCount: 98,
+            createdAt: "2025-01-14"
+          }
+        ]
+      };
+    }
+
+    function createLessons(id, provinceName, categoryNameGive, categoryNameTake, content, writer, viewCount, createdAt) {
+      return `
+        <div class="lesson" data-id="${id}">
+          <div class="lesson-header">
+            <span>${categoryNameGive}</span>
+            <span>${categoryNameTake}</span>
+          </div>
+          <div class="lesson-body">
+            <p><strong>Writer:</strong> ${writer}</p>
+            <p><strong>Date:</strong> ${createdAt}</p>
+            <p>${content}</p>
+          </div>
+          <div class="lesson-footer">
+            <span><strong>Province:</strong> ${provinceName}</span>
+            <span><strong>Views:</strong> ${viewCount}</span>
+          </div>
         </div>
-        <div class="card-body">
-            <p>안녕하세요! 저는 영어를 가르쳐드리고, 수학에 대해 배우고 싶습니다. 관심 있으신 분은 연락 부탁드립니다.</p>
-        </div>
-        <div class="card-footer">
-            <div class="location">
-                <span class="location-icon">📍</span>
-                <span>부산</span>
-            </div>
-            <div class="view-count">
-           
+      `;
+    }
+
+    async function renderLessons() {
+      const lessonList = await fetchLessons();
+      $renderArea.innerHTML = lessonList.postList.map(post => 
+        createLessons(
+          post.id, 
+          post.provinceName, 
+          post.categoryNameGive, 
+          post.categoryNameTake, 
+          post.content, 
+          post.writer, 
+          post.viewCount, 
+          post.createdAt
+        )
+      ).join("");
+
+      document.querySelectorAll('.lesson').forEach(lesson => {
+        lesson.addEventListener('click', () => {
+          const lessonId = lesson.dataset.id;
+          const selectedLesson = lessonList.postList.find(post => post.id == lessonId);
+
+          $modalContent.innerHTML = `
+            <h2>${selectedLesson.categoryNameGive} ↔ ${selectedLesson.categoryNameTake}</h2>
+            <p><strong>Writer:</strong> ${selectedLesson.writer}</p>
+            <p><strong>Date:</strong> ${selectedLesson.createdAt}</p>
+            <p>${selectedLesson.content}</p>
+            <p><strong>Province:</strong> ${selectedLesson.provinceName}</p>
+            <p><strong>Views:</strong> ${selectedLesson.viewCount}</p>
+          `;
+          $modalOverlay.style.display = 'block';
+          $modalContent.style.display = 'block';
+        });
+      });
+
+      $modalOverlay.addEventListener('click', () => {
+        $modalOverlay.style.display = 'none';
+        $modalContent.style.display = 'none';
+      });
+    }
+
+    renderLessons();
+  </script>
+</body>
+</html>
