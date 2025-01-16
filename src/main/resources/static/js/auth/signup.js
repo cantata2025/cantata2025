@@ -282,36 +282,50 @@ function initializeAdditionalInfoModal(container) {
       password: password,
     };
 
+    console.log(payload);
+
     // 서버로 데이터 전송
     fetchToSignUp(payload);
-    container.innerHTML = `
-      <h1>회원가입 완료</h1>
-      <p>축하합니다! 회원가입이 완료되었습니다.</p>
-      <p>잠시 후 로그인 페이지로 이동합니다...</p>
-    `;
-    setTimeout(() => {
-      location.href = "/";
-    }, 2000);
   });
 }
 async function fetchToSignUp(userData) {
   const response = await fetch("/api/cantata/auth/signup", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+    },
     body: JSON.stringify(userData),
   });
 
-  const data = await response.json();
+  if (!response.ok) {
+    alert("회원가입에 실패했습니다.");
+    location.href = "/signup";
+    return;
+  }
 
-  // window.location.href = '/'; // 로그인 페이지 이동
+  const data = await response.json();
+  const userEmail = data.email;
+
+  localStorage.setItem("signupEmail", emailInput.value);
+  localStorage.setItem("signupPassword", passwordInput.value);
+
+  container2.innerHTML = `
+      <h1>${userEmail}</h1>
+      <p>축하합니다! 회원가입이 완료되었습니다.</p>
+      <p>잠시 후 로그인 페이지로 이동합니다...</p>
+    `;
+
+
+  setTimeout(() => {
+    location.href = "/login";
+  }, 2000);
 }
 
 //  step2에서 뒤로가기 시 step1으로 돌아가도록 popstate 이벤트 처리
 window.addEventListener("popstate", (event) => {
   if (event.state && event.state.step === 1) {
-      goToStep(1); 
-  }
-  else if (event.state && event.state.step === 2) {
-      goToStep(2); 
+    goToStep(1);
+  } else if (event.state && event.state.step === 2) {
+    goToStep(2);
   }
 });
