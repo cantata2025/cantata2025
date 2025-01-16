@@ -26,7 +26,7 @@
 
       <button type="button" id="next-button">다음</button>
     </form>
-    <p>계정이 있으신가요? <a href="../auth/login.html">로그인</a></p>
+    <p>계정이 있으신가요? <a href="/login">로그인</a></p>
   </div>
   <div class="signup-container hidden" id="signup-container2">
 

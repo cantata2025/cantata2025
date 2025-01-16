@@ -121,6 +121,12 @@ body {
   cursor: pointer;
 }
 
+#subcategory-list {
+  max-height: 300px; 
+  overflow-y: auto; 
+  overflow-x: hidden; 
+}
+
 .hidden {
   display: none;
 }
