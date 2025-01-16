@@ -6,6 +6,7 @@ const emailInput = document.getElementById("email-input");
 const nicknameInput = document.getElementById("nickname-input");
 const passwordInput = document.getElementById("password-input");
 const nextButton = document.getElementById("next-button");
+const loginBtton = document.getElementById
 
 const emailError = document.getElementById("email-error");
 const nicknameError = document.getElementById("nickname-error");
