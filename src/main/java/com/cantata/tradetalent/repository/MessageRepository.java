@@ -1,8 +1,13 @@
 package com.cantata.tradetalent.repository;
 
+import com.cantata.tradetalent.domain.Message.dto.SearchMessagesResponse;
 import com.cantata.tradetalent.domain.Message.entity.Message;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
+
+import java.util.List;
 
 @Mapper
 public interface MessageRepository {
@@ -16,4 +21,11 @@ public interface MessageRepository {
 
     // 메시지 삭제
     int deleteMessage(Long id);
+
+    // 메세지 조회
+    List<SearchMessagesResponse> findMessages(
+            @Param("email") String email
+            ,@Param("offset") int offset
+            ,@Param("limit") int limit
+    );
 }
