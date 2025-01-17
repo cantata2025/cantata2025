@@ -4,6 +4,7 @@ import com.cantata.tradetalent.domain.Talent.dto.TalentRequest;
 import com.cantata.tradetalent.domain.User.dto.request.LoginRequest;
 import com.cantata.tradetalent.domain.User.dto.request.SignUpRequest;
 import com.cantata.tradetalent.domain.User.dto.response.DuplicateCheckResponse;
+import com.cantata.tradetalent.domain.User.entity.User;
 import com.cantata.tradetalent.service.TalentService;
 import com.cantata.tradetalent.service.UserService;
 import jakarta.validation.Valid;
@@ -48,6 +49,19 @@ public class AuthController {
         DuplicateCheckResponse responsedto = userService.checkDuplicate(type, value);
         log.info("responsedto : {}",responsedto);
         return ResponseEntity.ok().body(responsedto);
+    }
+
+    // 회원정보 조회
+    @GetMapping("/user")
+    public ResponseEntity<?> checkDuplicate(
+            @AuthenticationPrincipal String email
+    ){
+        User user = userService.findUser(email);
+
+        return ResponseEntity.ok().body(Map.of(
+                "message", "success"
+                ,"user",user
+        ));
     }
 
     // 로그인 검증 api

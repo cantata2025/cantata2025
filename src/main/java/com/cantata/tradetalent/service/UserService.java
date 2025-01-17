@@ -102,4 +102,12 @@ public class UserService {
                 "accessToken", jwtTokenProvider.createAccessToken(foundUser.getEmail())
         );
     }
+
+    public User findUser(String email){
+        return userRepository.findByEmail(email)
+                .orElseGet(() -> userRepository.findByName(email)
+                        .orElseThrow(() ->
+                                new UserException(ErrorCode.MEMBER_NOT_FOUND)
+                        ));
+    }
 }
