@@ -10,23 +10,29 @@ export const ValidationRules = {
     message: '올바른 전화번호 형식이 아닙니다.',
     requiredMessage: '이메일 또는 전화번호를 입력해주세요.'
   },
+
   password: {
-    patterns: {
-      length: /.{8,}/,
-      letter: /[A-Za-z]/,
-      number: /\d/,
-      special: /[!@#$%^&*]/,
-      uppercase: /[A-Z]/,
-      lowercase: /[a-z]/
-    },
-    messages: {
-      length: '비밀번호는 8자 이상이어야 합니다.',
-      weak: '비밀번호가 너무 약합니다.',
-      medium: '비밀번호를 더 강력하게 만드세요.',
-      strong: '강력한 비밀번호입니다.'
-    },
+    pattern: /^(?=.*[가-힣A-Za-z])(?=.*\d).{8,}$/,
+    message: '비밀번호는 8자 이상, 글자와 숫자 조합이어야 합니다.',
     requiredMessage: '비밀번호를 입력해주세요.'
   },
+  // password: {
+  //   patterns: {
+  //     length: /.{8,}/,
+  //     letter: /[A-Za-z]/,
+  //     number: /\d/,
+  //     special: /[!@#$%^&*]/,
+  //     uppercase: /[A-Z]/,
+  //     lowercase: /[a-z]/
+  //   },
+  //   messages: {
+  //     length: '비밀번호는 8자 이상이어야 합니다.',
+  //     weak: '비밀번호가 너무 약합니다.',
+  //     medium: '비밀번호를 더 강력하게 만드세요.',
+  //     strong: '강력한 비밀번호입니다.'
+  //   },
+  //   requiredMessage: '비밀번호를 입력해주세요.'
+  // },
   name: {
     requiredMessage: '성명을 입력해주세요.'
   },

@@ -71,9 +71,9 @@ async function fetchValidate(type, $input) {
 // 입력값 확인 함수
 async function validateInputs(type) {
   let isValid = false;
-  if(!type){
-    await fetchValidate("email",emailInput);
-    await fetchValidate("name",nicknameInput);
+  if (!type) {
+    await fetchValidate("email", emailInput);
+    await fetchValidate("name", nicknameInput);
     return false;
   }
 
@@ -98,11 +98,10 @@ async function validateInputs(type) {
   }
 
   if (type === "password") {
-    if (!ValidationRules.password.patterns.length.test(passwordInput.value)) {
-      passwordError.textContent = ValidationRules.password.messages.length;
+    if (!ValidationRules.password.pattern.test(passwordInput.value)) {
+      passwordError.textContent = ValidationRules.password.message;
       return false;
-    } 
-    else {
+    } else {
       passwordError.textContent = "";
       isValid = true;
     }
@@ -128,26 +127,31 @@ async function validateInputs(type) {
 }
 
 // '다음' 버튼 클릭 이벤트
-nextButton.addEventListener("click",async () => {
-  if (!await validateInputs()) {
+nextButton.addEventListener("click", async () => {
+  if (!(await validateInputs())) {
     const $errorMessaes = document.querySelectorAll(".error-message");
     let $input;
-    
-    for(const $error of $errorMessaes){  
-      if($error.textContent){
+
+    for (const $error of $errorMessaes) {
+      if ($error.textContent) {
         $input = $error;
         break;
       }
     }
-    $input.previousElementSibling.oninput();
-    $input.previousElementSibling.focus();
-    return;
+
+    if ($input) {
+      $input.previousElementSibling.oninput();
+      $input.previousElementSibling.focus();
+      return;
+    }
   }
 
+  console.log("ggggg");
+
   // 데이터 저장
-  localStorage.setItem("signupEmail", emailInput.value);
-  localStorage.setItem("signupNickname", nicknameInput.value);
-  localStorage.setItem("signupPassword", passwordInput.value);
+  // localStorage.setItem("signupEmail", emailInput.value);
+  // localStorage.setItem("signupNickname", nicknameInput.value);
+  // localStorage.setItem("signupPassword", passwordInput.value);
 
   goToStep(2);
 });
@@ -370,11 +374,13 @@ function initializeAdditionalInfoModal(container) {
     };
 
     const subcategoryObj = {
-      give: giveTalent,
-      take: takeTalent,
+      email: email,
+      give: giveTalent || "",
+      take: takeTalent || "",
     };
 
     console.log(payload);
+    console.log(subcategoryObj);
 
     // 서버로 데이터 전송
     fetchToSignUp(payload, subcategoryObj);
@@ -399,7 +405,6 @@ async function fetchToSignUp(userData, subcategoryObj) {
   const userEmail = data.email;
 
   localStorage.setItem("signupEmail", emailInput.value);
-  localStorage.setItem("signupPassword", passwordInput.value);
 
   // 재능 선택 했다면 저장
   const talentResponse = await fetch("/api/cantata/auth/accept", {
@@ -428,9 +433,9 @@ async function fetchToSignUp(userData, subcategoryObj) {
       <p>잠시 후 로그인 페이지로 이동합니다...</p>
     `;
 
-  // setTimeout(() => {
-  //   location.href = "/login";
-  // }, 2000);
+  setTimeout(() => {
+    location.href = "/login";
+  }, 2000);
 }
 
 //  step2에서 뒤로가기 시 step1으로 돌아가도록 popstate 이벤트 처리
