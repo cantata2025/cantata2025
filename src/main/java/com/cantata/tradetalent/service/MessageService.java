@@ -1,5 +1,6 @@
 package com.cantata.tradetalent.service;
 
+import com.cantata.tradetalent.domain.Message.dto.SearchMessagesResponse;
 import com.cantata.tradetalent.domain.Message.dto.request.MessageDto;
 import com.cantata.tradetalent.domain.Message.entity.Message;
 import com.cantata.tradetalent.repository.MessageRepository;
@@ -8,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @Slf4j
@@ -46,5 +49,10 @@ public class MessageService {
         }
     }
 
+    // 메세지 조회 서비스
+    public List<SearchMessagesResponse> searchMessages(String email, int offset, int limit){
+        List<SearchMessagesResponse> messages = messageRepository.findMessages(email, offset, limit);
+        return messages;
+    }
 
 }

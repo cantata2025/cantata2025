@@ -22,4 +22,23 @@
     </update>
 
 
+<!--   메세지 검색-->
+    <select id="findMessages" resultType="SearchMessagesResponse">
+        SELECT
+        m.pk as id,
+        U2.email as sender_email,
+        u.email as receiver_email,
+        m.content,
+        m.created_at
+        ,m.is_read
+        FROM messages m
+        JOIN users u
+        ON m.receiver_id = u.id
+        JOIN users u2
+        ON m.sender_id = u2.id
+        WHERE m.is_deleted IS NOT NULL
+        AND sender_id = (select id from users where email = #{email});
+<!--        LIMIT #{limit} OFFSET #{offset}-->
+    </select>
+
 </mapper>

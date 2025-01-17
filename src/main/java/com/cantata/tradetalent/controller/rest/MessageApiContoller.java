@@ -1,6 +1,7 @@
 package com.cantata.tradetalent.controller.rest;
 
 
+import com.cantata.tradetalent.domain.Message.dto.SearchMessagesResponse;
 import com.cantata.tradetalent.domain.Message.dto.request.MessageDto;
 import com.cantata.tradetalent.domain.Message.entity.Message;
 import com.cantata.tradetalent.service.MessageService;
@@ -8,8 +9,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -55,5 +58,20 @@ public class MessageApiContoller {
         message.setId(id);
         messageService.remove(id);
         return ResponseEntity.ok().body("삭제가 완료되었습니다.");
+    }
+
+    //메세지 조회 (20개씩 끊어서)
+    @GetMapping("/search")
+    public ResponseEntity<?> searchMessages(
+            @RequestParam int page
+            ,@RequestParam int limit
+            ,@AuthenticationPrincipal String email
+    ){
+
+        List<SearchMessagesResponse> searchMessagesResponses = messageService.searchMessages(email, page, limit);
+        return ResponseEntity.ok().body(Map.of(
+                "message" ,"success"
+                ,"messageList",searchMessagesResponses
+        ));
     }
 }
