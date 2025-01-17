@@ -27,5 +27,5 @@ public interface CategoryRepository {
 
 
     //단일 유저 카테고리 조회
-    public String getUserCategory(int id);
+    public String getUserCategory(String email);
 }

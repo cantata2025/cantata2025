@@ -44,11 +44,20 @@
 <!--    유저 카테고리 단일 조회-->
     <select id="getUserCategory" resultType="String">
         SELECT
-            sub_category_name
-        FROM categories_give
-        JOIN categories
-        ON category_id = categories.id
-        WHERE user_id = #{id}
+            cg.type,
+            c.main_category_name,
+            c.sub_category_name
+        FROM
+            categories_give cg
+                JOIN
+            categories c
+            ON cg.category_id = c.id
+                JOIN
+            users u
+            ON cg.user_id = u.id
+        WHERE
+            u.email = '#{email}';
+
     </select>
 
 

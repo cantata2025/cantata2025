@@ -52,9 +52,9 @@ public class CategoryApiController {
 
 }
 // 유저 카테고리 단일 조회
-    @GetMapping("/{id}")
-    public ResponseEntity<?> getCategoryById(@PathVariable int id) {
-        String userCategory = categoryService.getUserCategory(id);
+    @GetMapping("/{email}")
+    public ResponseEntity<?> getCategoryById(@PathVariable String email) {
+        String userCategory = categoryService.getUserCategory(email);
         return ResponseEntity.ok().body(userCategory);
 
     }
