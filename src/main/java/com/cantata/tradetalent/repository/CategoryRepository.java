@@ -28,6 +28,8 @@ public interface CategoryRepository {
     List<String> getDistrictName(String provinceName);
 
 
+
     //단일 유저 카테고리 조회
-    List<SingleUserTalentRequest> getUserCategory(SingleUserTalentRequest singleUserTalentRequest);
+    List<SingleUserTalentRequest> getUserCategory(String singleUserTalentRequest);
+
 }

@@ -39,13 +39,6 @@ public class TalentService {
 
         return "추가가 완료되었습니다.";
     }
-//    // 유저 카테고리 변경
-//    public String updateTalent(UpdateTalentRequest updateTalentRequest) {
-//        talentCategoryRepository.updateTalent(updateTalentRequest);
-//        if(!updateTalentRequest.getEmail().isEmpty()){
-//
-//        }
-//    }
 
 }
 

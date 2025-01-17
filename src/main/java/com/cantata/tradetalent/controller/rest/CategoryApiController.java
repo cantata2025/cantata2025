@@ -54,11 +54,12 @@ public class CategoryApiController {
 }
 // 유저 카테고리 단일 조회
 
-//    @GetMapping("/{email}")
-//    public ResponseEntity<?> getCategoryByEmail(@PathVariable String email) {
-//        List<SingleUserTalentRequest> userCategories = categoryService.getUserCategoryByEmail(email);
-//        return ResponseEntity.ok().body(userCategories);
-//    }
+    @GetMapping("/{email}")
+    public ResponseEntity<?> getCategoryByEmail(@PathVariable String email) {
+        List<SingleUserTalentRequest> userCategories = categoryService.getSingleUserTalents(email);
+        return ResponseEntity.ok().body(userCategories);
+    }
+
 
 
 

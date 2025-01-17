@@ -42,7 +42,7 @@
     </select>
 
 <!--    유저 카테고리 단일 조회-->
-    <select id="getUserCategory" resultType="String">
+    <select id="getUserCategory" resultType="SingleUserTalentRequest">
         SELECT
             cg.type,
             c.main_category_name,

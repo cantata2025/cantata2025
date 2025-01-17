@@ -72,11 +72,11 @@ public class CategoryService {
 
 
     // 유저 카테고리 단일 조회
+    public List<SingleUserTalentRequest> getSingleUserTalents(String email) {
 
-//    public List<SingleUserTalentRequest> getUserCategory
-//        {
-//        return categoryRepository.getUserCategory()
-//        }
+        List<SingleUserTalentRequest> userCategory = categoryRepository.getUserCategory(email);
+        return userCategory;
+    }
     }
 
 
