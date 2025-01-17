@@ -1,6 +1,7 @@
 package com.cantata.tradetalent.controller.rest;
 
 import com.cantata.tradetalent.domain.Category.dto.request.RegionCategoryDto;
+import com.cantata.tradetalent.domain.Talent.dto.SingleUserTalentRequest;
 import com.cantata.tradetalent.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -52,11 +53,13 @@ public class CategoryApiController {
 
 }
 // 유저 카테고리 단일 조회
-    @GetMapping("/{email}")
-    public ResponseEntity<?> getCategoryById(@PathVariable String email) {
-        String userCategory = categoryService.getUserCategory(email);
-        return ResponseEntity.ok().body(userCategory);
 
-    }
+//    @GetMapping("/{email}")
+//    public ResponseEntity<?> getCategoryByEmail(@PathVariable String email) {
+//        List<SingleUserTalentRequest> userCategories = categoryService.getUserCategoryByEmail(email);
+//        return ResponseEntity.ok().body(userCategories);
+//    }
+
+
 
 }

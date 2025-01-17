@@ -56,7 +56,7 @@
             users u
             ON cg.user_id = u.id
         WHERE
-            u.email = '#{email}';
+            u.email = #{email}
 
     </select>
 

@@ -1,6 +1,8 @@
 package com.cantata.tradetalent.repository;
 
+import com.cantata.tradetalent.domain.Talent.dto.SingleUserTalentRequest;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -27,5 +29,5 @@ public interface CategoryRepository {
 
 
     //단일 유저 카테고리 조회
-    public String getUserCategory(String email);
+    List<SingleUserTalentRequest> getUserCategory(SingleUserTalentRequest singleUserTalentRequest);
 }
