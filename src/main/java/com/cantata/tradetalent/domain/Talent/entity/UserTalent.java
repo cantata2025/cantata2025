@@ -3,6 +3,8 @@ package com.cantata.tradetalent.domain.Talent.entity;
 import lombok.*;
 import org.apache.ibatis.annotations.Property;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @ToString
@@ -12,9 +14,10 @@ import org.apache.ibatis.annotations.Property;
 @Builder
 public class UserTalent {
 
-    private String userEmail;  //회원 이메일
+    private Long id;
+    private Long userId;  //회원 이메일
     private int type; // 1-give 2-take
-    private String subGiveTalentName; // 줄 수 있는 기능
-    private String subTakeTalentName; // 받고 싶은 기능
+    private int talentId; // 줄 수 있는 기능
+    private LocalDateTime createdAt;
 
 }

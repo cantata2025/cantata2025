@@ -1,6 +1,7 @@
 package com.cantata.tradetalent.domain.Talent.dto;
 
 import com.cantata.tradetalent.domain.Talent.entity.UserTalent;
+import com.cantata.tradetalent.domain.User.entity.User;
 import lombok.*;
 
 @Getter
@@ -15,12 +16,4 @@ public class TalentRequest {
     private String give;
     private String take;
 
-    public static UserTalent toEntry(int type, TalentRequest talentRequest){
-        return UserTalent.builder()
-                .userEmail(talentRequest.getEmail())
-                .type(type)
-                .subTakeTalentName(talentRequest.getTake())
-                .subGiveTalentName(talentRequest.getGive())
-                .build();
-    }
 }
