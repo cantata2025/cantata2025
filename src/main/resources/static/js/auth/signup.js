@@ -1,3 +1,6 @@
+import { ValidationRules, checkPasswordStrength } from "./validation.js";
+import { debounce } from "../ui/debounce.js";
+
 const container = document.getElementById("signup-container");
 const container2 = document.getElementById("signup-container2");
 
@@ -6,7 +9,7 @@ const emailInput = document.getElementById("email-input");
 const nicknameInput = document.getElementById("nickname-input");
 const passwordInput = document.getElementById("password-input");
 const nextButton = document.getElementById("next-button");
-const loginBtton = document.getElementById
+const loginBtton = document.getElementById;
 
 const emailError = document.getElementById("email-error");
 const nicknameError = document.getElementById("nickname-error");
@@ -15,56 +18,140 @@ const passwordError = document.getElementById("password-error");
 document.addEventListener("DOMContentLoaded", () => {
   // 테스트용----
   // 로컬 스토리지에서 기존 데이터 가져오기
-  const savedEmail = localStorage.getItem("signupEmail") || "";
-  const savedNickname = localStorage.getItem("signupNickname") || "";
-  const savedPassword = localStorage.getItem("signupPassword") || "";
+  // const savedEmail = localStorage.getItem("signupEmail") || "";
+  // const savedNickname = localStorage.getItem("signupNickname") || "";
+  // const savedPassword = localStorage.getItem("signupPassword") || "";
 
-  // 데이터 복원
-  emailInput.value = savedEmail;
-  nicknameInput.value = savedNickname;
-  passwordInput.value = savedPassword;
-  //------
+  // // 데이터 복원
+  // emailInput.value = savedEmail;
+  // nicknameInput.value = savedNickname;
+  // passwordInput.value = savedPassword;
+  // //------
 
-  // 입력값 확인 함수
-  validateInputs();
+  // 이메일값 검증
+  emailInput.oninput = (e) => {
+    if (validateInputs("email")) {
+      debouncedValidate("email", emailInput);
+    }
+  };
+
+  // 이름값 검증
+  nicknameInput.oninput = (e) => {
+    if (validateInputs("name")) {
+      debouncedValidate("name", nicknameInput);
+    }
+  };
+
+  // 비밀번호값 검증
+  passwordInput.oninput = (e) => {
+    validateInputs("password");
+  };
 });
 
+const debouncedValidate = debounce(async (type, $input) => {
+  await fetchValidate(type, $input);
+}, 700);
+
+async function fetchValidate(type, $input) {
+  const value = $input.value;
+  const response = await fetch(
+    `/api/cantata/auth/user-duplicate?type=${type}&value=${value}`
+  );
+  if (!response.ok) {
+    alert("데이터 로딩 실패");
+  }
+  const data = await response.json();
+
+  if (!data.available) {
+    const $error = $input.nextElementSibling;
+    $error.textContent = data.message;
+  }
+}
+
 // 입력값 확인 함수
-function validateInputs() {
-  let isValid = true;
-
-  if (!emailInput.value.includes("@")) {
-    emailError.textContent = "유효한 이메일 주소를 입력해주세요.";
-    isValid = false;
-  } else {
-    emailError.textContent = "";
+async function validateInputs(type) {
+  let isValid = false;
+  if (!type) {
+    await fetchValidate("email", emailInput);
+    await fetchValidate("name", nicknameInput);
+    return false;
   }
 
-  if (nicknameInput.value.trim() === "") {
-    nicknameError.textContent = "별명을 입력해주세요.";
-    isValid = false;
-  } else {
-    nicknameError.textContent = "";
+  if (type === "email") {
+    if (!ValidationRules.email.pattern.test(emailInput.value)) {
+      emailError.textContent = ValidationRules.email.message;
+      return false;
+    } else {
+      emailError.textContent = "";
+      isValid = true;
+    }
   }
 
-  if (passwordInput.value.length < 6) {
-    passwordError.textContent = "비밀번호는 최소 6자 이상이어야 합니다.";
-    isValid = false;
-  } else {
-    passwordError.textContent = "";
+  if (type === "name") {
+    if (!ValidationRules.username.pattern.test(nicknameInput.value)) {
+      nicknameError.textContent = ValidationRules.username.message;
+      return false;
+    } else {
+      nicknameError.textContent = "";
+      isValid = true;
+    }
   }
 
+  if (type === "password") {
+    if (!ValidationRules.password.pattern.test(passwordInput.value)) {
+      passwordError.textContent = ValidationRules.password.message;
+      return false;
+    } else {
+      passwordError.textContent = "";
+      isValid = true;
+    }
+    // else {
+    //   const strenth = checkPasswordStrength(passwordInput.value);
+    //   switch (strenth) {
+    //     case "weak": // 에러
+    //       passwordError.textContent = ValidationRules.password.messages.weak;
+    //       break;
+    //     case "medium":
+    //       passwordError.textContent = ValidationRules.password.messages.medium;
+    //       break;
+    //     case "strong":
+    //       passwordError.textContent = ValidationRules.password.messages.strong;
+    //       break;
+    //     default:
+    //       passwordError.textContent = "";
+    //   }
+    //   isValid = true;
+    // }
+  }
   return isValid;
 }
 
 // '다음' 버튼 클릭 이벤트
-nextButton.addEventListener("click", () => {
-  if (!validateInputs()) return;
+nextButton.addEventListener("click", async () => {
+  if (!(await validateInputs())) {
+    const $errorMessaes = document.querySelectorAll(".error-message");
+    let $input;
+
+    for (const $error of $errorMessaes) {
+      if ($error.textContent) {
+        $input = $error;
+        break;
+      }
+    }
+
+    if ($input) {
+      $input.previousElementSibling.oninput();
+      $input.previousElementSibling.focus();
+      return;
+    }
+  }
+
+  console.log("ggggg");
 
   // 데이터 저장
-  localStorage.setItem("signupEmail", emailInput.value);
-  localStorage.setItem("signupNickname", nicknameInput.value);
-  localStorage.setItem("signupPassword", passwordInput.value);
+  // localStorage.setItem("signupEmail", emailInput.value);
+  // localStorage.setItem("signupNickname", nicknameInput.value);
+  // localStorage.setItem("signupPassword", passwordInput.value);
 
   goToStep(2);
 });
@@ -277,19 +364,29 @@ function initializeAdditionalInfoModal(container) {
     const name = document.getElementById("nickname-input").value;
     const password = document.getElementById("password-input").value;
 
+    const giveTalent = skillInput.value.split(" - ")[1];
+    const takeTalent = wantInput.value.split(" - ")[1];
+
     const payload = {
       email: email,
       name: name,
       password: password,
     };
 
+    const subcategoryObj = {
+      email: email,
+      give: giveTalent || "",
+      take: takeTalent || "",
+    };
+
     console.log(payload);
+    console.log(subcategoryObj);
 
     // 서버로 데이터 전송
-    fetchToSignUp(payload);
+    fetchToSignUp(payload, subcategoryObj);
   });
 }
-async function fetchToSignUp(userData) {
+async function fetchToSignUp(userData, subcategoryObj) {
   const response = await fetch("/api/cantata/auth/signup", {
     method: "POST",
     headers: {
@@ -308,14 +405,33 @@ async function fetchToSignUp(userData) {
   const userEmail = data.email;
 
   localStorage.setItem("signupEmail", emailInput.value);
-  localStorage.setItem("signupPassword", passwordInput.value);
+
+  // 재능 선택 했다면 저장
+  const talentResponse = await fetch("/api/cantata/auth/accept", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(subcategoryObj),
+  });
+
+  if (!talentResponse.ok) {
+    alert(
+      "재능 등록에 실패했습니다. 로그인 후 설정페이지에서 다시 등록해주세요."
+    );
+    location.href = "/signup";
+    return;
+  }
+
+  const talentData = await talentResponse.json();
+
+  console.log(talentData);
 
   container2.innerHTML = `
       <h1>${userEmail}</h1>
       <p>축하합니다! 회원가입이 완료되었습니다.</p>
       <p>잠시 후 로그인 페이지로 이동합니다...</p>
     `;
-
 
   setTimeout(() => {
     location.href = "/login";

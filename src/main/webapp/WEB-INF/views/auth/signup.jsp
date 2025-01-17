@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>가입</title>
   <link rel="stylesheet" href="css/auth/signup.css">
-<script src="js/auth/signup.js" defer></script>
+<script src="js/auth/signup.js" type="module" defer></script>
 </head>
 <body>
   <div class="signup-container" id="signup-container">

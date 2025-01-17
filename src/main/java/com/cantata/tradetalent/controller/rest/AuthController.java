@@ -96,7 +96,9 @@ public class AuthController {
         String talent = talentService.createTalent(talentRequest);
 
 
-        return ResponseEntity.ok().body(talent);
+        return ResponseEntity.ok().body(Map.of(
+                "message", talent
+        ));
 
     }
 
